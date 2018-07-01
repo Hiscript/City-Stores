@@ -1,0 +1,27 @@
+<div class="page-auth">
+    <div class="main-body">
+        <mat-card>
+            <mat-card-title class="text-center">
+                <img src="assets/images/citystore.png" class="logo" />
+                <div class="divider divider-md"></div>
+            </mat-card-title>
+            <mat-card-subtitle>
+                Login to your account
+            </mat-card-subtitle>
+            <mat-card-content>
+                <form (ngSubmit)="submit()" [formGroup]="loginForm" novalidate>
+                    <phone-control required="true" label="Mobile No." width="100%" [control]="loginForm.controls.Mobile"></phone-control>
+                    <text-control required="true" label="Passwod" width="100%" type="password" suffix="lock" [control]="loginForm.controls.Password"></text-control>
+                    <mat-checkbox disableRipple="true" color="primary" class="float-left" formControlName="Remember">Remember</mat-checkbox>
+                    <div class="divider divider-md"></div>
+                    <div class="text-center">
+                        <button mat-raised-button type="submit" color="primary">Login</button>
+                    </div>
+                </form>
+            </mat-card-content>
+            <mat-card-actions class="text-center">
+                <button mat-button type="button">Forgot Password?</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

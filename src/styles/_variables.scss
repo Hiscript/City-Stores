@@ -1,0 +1,34 @@
+$primary-palette: mat-palette($mat-teal, 500, 300, 900);
+$accent-palette: mat-palette($mat-light-blue);
+$warn-palette: mat-palette($mat-deep-orange, A200);
+
+$primary: mat-color($primary-palette);
+$accent: mat-color($accent-palette);
+$warn: mat-color($warn-palette);
+
+
+
+// gray-shades
+$white: #fff !default;
+$gray-100: #f8f9fa !default; // $gray-lightest
+$gray-200: #e9ecef !default; // $gray-lighter
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default; // $gray-light
+$gray-700: #495057 !default; // $gray
+$gray-800: #343a40 !default; // $gray-dark
+$gray-900: #212529 !default; // $gray-darker
+$black: #000 !default;
+
+// border
+$border: $gray-500;
+
+// grid
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;

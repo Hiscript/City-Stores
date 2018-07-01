@@ -1,0 +1,15 @@
+.page-auth {
+  min-height: 100%;
+  //background: linear-gradient(to bottom, $primary 50%, $gray-200 50%);
+  background-color: $primary;
+
+  .main-body {
+    position: relative;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 50px 0 20px;
+    @media (min-width: map-get($grid-breakpoints, md)) {
+      padding-top: 150px;
+    }
+  }
+}

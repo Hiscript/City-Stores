@@ -1,0 +1,7 @@
+<mat-form-field appearance="outline" [ngStyle]="{'width': width}" style="max-width: 100%">
+    <mat-label *ngIf="label">{{label}}</mat-label>
+    <input matInput type="email" [placeholder]="placeholder" [formControl]="control" [required]="required" [maxlength]="maxlength">
+    <mat-hint align="end">{{hint}}</mat-hint>
+    <mat-error>{{control.errors | errorMessage}}</mat-error>
+    <mat-icon matSuffix class="material-icons">mail</mat-icon>
+</mat-form-field>
