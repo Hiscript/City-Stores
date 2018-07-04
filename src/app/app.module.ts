@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app';
 
 import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RequestInterceptor } from './global/request.interceptor';
 
 @NgModule({
     declarations: [AppComponent],
@@ -17,11 +19,18 @@ import { CommonModule } from '@angular/common';
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
+        HttpClientModule,
         ServiceWorkerModule.register('/ngsw-worker.js', {
             enabled: environment.production
         })
     ],
-    providers: [],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: RequestInterceptor,
+            multi: true
+        }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

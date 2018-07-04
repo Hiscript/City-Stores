@@ -2,27 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-
 import {
     ErrorMessagePipe,
     EmailControlComponent,
     PhoneControlComponent,
     TextControlComponent
 } from './';
+import { MaterialModule } from '../shared/material/material.module';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatIconModule,
-        MatButtonModule
-    ],
+    imports: [CommonModule, MaterialModule, ReactiveFormsModule],
     declarations: [
         // pipes
         ErrorMessagePipe,
@@ -38,8 +27,7 @@ import {
         PhoneControlComponent,
         // modules
         CommonModule,
-        ReactiveFormsModule,
-        MatButtonModule
+        ReactiveFormsModule
     ],
     providers: []
 })

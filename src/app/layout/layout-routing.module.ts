@@ -2,6 +2,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutComponent } from './layout.component';
 import { HomeComponent } from '../home/home.component';
+import { AuthGuard } from '../global/auth.guard';
+import { Right } from '../global/rights.enum';
 
 const routes: Routes = [
     {
@@ -9,10 +11,12 @@ const routes: Routes = [
         component: LayoutComponent,
         children: [
             { path: '', redirectTo: '/app/home', pathMatch: 'full' },
+            { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
             {
-                path: 'home',
-                component: HomeComponent,
-                data: { title: 'Home' }
+                path: 'dashboard',
+                loadChildren: '../dashboard/dashboard.module#DashboardModule',
+                canActivate: [AuthGuard],
+                data: { right: Right.dashboard }
             }
         ]
     }

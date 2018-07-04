@@ -6,9 +6,10 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { ControlModule } from '../controls/control.module';
 
 import { LoginComponent } from './auth';
+import { MaterialModule } from '../shared/material/material.module';
 
 @NgModule({
-    imports: [AuthRoutingModule, MatCardModule, ControlModule, MatCheckboxModule],
+    imports: [AuthRoutingModule, MatCardModule, ControlModule, MatCheckboxModule, MaterialModule],
     declarations: [LoginComponent]
 })
 export class AuthModule {}
