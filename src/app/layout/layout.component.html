@@ -1,0 +1,25 @@
+<mat-sidenav-container class="app-container" hasBackdrop="false" [ngClass]="{'collapsed': navCollapsed}">
+    <mat-sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="!navClosed">
+        <div class="sidebar-header">
+            <div class="brand">
+                <span class="full">
+                    City Store
+                </span>
+                <span class="short">
+                    <mat-icon>C</mat-icon>
+                </span>
+            </div>
+            <a href="javascript:;" class="collapsednav-toggler" (click)="toggleCollapsedNav()">
+                <i class="material-icons" *ngIf="navCollapsed" tabindex="-1">radio_button_unchecked</i>
+                <i class="material-icons" *ngIf="!navCollapsed" tabindex="-1"> {{mobileQuery.matches?'close': 'radio_button_checked'}}</i>
+            </a>
+        </div>
+        <app-nav></app-nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-header (toggleNav)="toggleCollapsedNav()"></app-header>
+        <div class="app-content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

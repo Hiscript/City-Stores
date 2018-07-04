@@ -1,0 +1,18 @@
+// Header
+.app-container {
+    height: 100%;
+}
+
+.app-header {
+    height: $header-height-sm !important;
+    background-color: #fff !important;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        height: $header-height !important;
+    }
+}
+
+.app-content {
+    height: calc(100% - #{$header-height + $footer-height});
+}

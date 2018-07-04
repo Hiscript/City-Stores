@@ -9,6 +9,9 @@
 @import "styles/typography";
 @import "styles/_material-override";
 @import "styles/_space";
+@import "styles/_sidebar";
+@import "styles/_layout";
+
 .default-theme {
   @include angular-material-theme($default-theme);
 }

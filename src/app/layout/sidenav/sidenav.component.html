@@ -1,0 +1,133 @@
+<mat-nav-list class="nav" dense>
+    <mat-list-item>
+        <mat-icon mat-list-icon>home</mat-icon>
+        <a matLine class="nav-text">Home</a>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-icon mat-list-icon>dashboard</mat-icon>
+        <a matLine class="nav-text">Dashboard</a>
+    </mat-list-item>
+
+    <div [ngClass]="{'open': openParent=='stock'}">
+        <mat-list-item class="parent" (click)="open('stock')">
+            <mat-icon mat-list-icon>label</mat-icon>
+            <a matLine class="nav-text">Stock</a>
+            <mat-icon class="expand-icon">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="child">
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">Categories</a>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">Products</a>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">Adjustment</a>
+            </mat-list-item>
+        </div>
+    </div>
+
+    <div [ngClass]="{'open': openParent=='sale'}">
+        <mat-list-item class="parent" (click)="open('sale')">
+            <mat-icon mat-list-icon>shopping_cart</mat-icon>
+            <a matLine class="nav-text">Sale</a>
+            <mat-icon class="expand-icon">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="child">
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">Customers</a>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">Sale Orders</a>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">Shipments</a>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">Invoices</a>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">Returns</a>
+            </mat-list-item>
+        </div>
+    </div>
+
+    <div [ngClass]="{'open': openParent=='marketing'}">
+        <mat-list-item class="parent" (click)="open('marketing')">
+            <mat-icon mat-list-icon>label</mat-icon>
+            <a matLine class="nav-text">Marketing</a>
+            <mat-icon class="expand-icon">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="child">
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">Public Site</a>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">SMS Marketing</a>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">Email Marketing</a>
+            </mat-list-item>
+        </div>
+    </div>
+
+    <div [ngClass]="{'open': openParent=='finance'}">
+        <mat-list-item class="parent" (click)="open('finance')">
+            <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
+            <a matLine class="nav-text">Finance</a>
+            <mat-icon class="expand-icon">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="child">
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">Prices</a>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">Taxes</a>
+            </mat-list-item>
+        </div>
+    </div>
+
+    <mat-list-item>
+        <mat-icon mat-list-icon>pie_chart</mat-icon>
+        <a matLine class="nav-text">Reports</a>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-icon mat-list-icon>arrow_downward</mat-icon>
+        <a matLine class="nav-text">Imports</a>
+    </mat-list-item>
+
+    <div [ngClass]="{'open': openParent=='config'}">
+        <mat-list-item class="parent" (click)="open('config')">
+            <mat-icon mat-list-icon>settings</mat-icon>
+            <a matLine class="nav-text">Configuration</a>
+            <mat-icon class="expand-icon">expand_more</mat-icon>
+        </mat-list-item>
+        <div class="child">
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">Settings</a>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">Auto Numbers</a>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon mat-list-icon></mat-icon>
+                <a matLine class="nav-text">Data</a>
+            </mat-list-item>
+        </div>
+    </div>
+</mat-nav-list>

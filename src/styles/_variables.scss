@@ -1,12 +1,11 @@
-$primary-palette: mat-palette($mat-teal, 500, 300, 900);
+// theme
+$primary-palette: mat-palette($mat-teal, 700, 300);
 $accent-palette: mat-palette($mat-light-blue);
 $warn-palette: mat-palette($mat-deep-orange, A200);
 
 $primary: mat-color($primary-palette);
 $accent: mat-color($accent-palette);
 $warn: mat-color($warn-palette);
-
-
 
 // gray-shades
 $white: #fff !default;
@@ -26,9 +25,15 @@ $border: $gray-500;
 
 // grid
 $grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
 ) !default;
+
+// layout
+$sidenav-width: 250px;
+$header-height: 56px;
+$header-height-sm: 48px;
+$footer-height: 30px;
