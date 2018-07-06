@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>CityStore</title>
@@ -13,8 +14,31 @@
   <meta name="theme-color" content="#1976d2">
 
   <noscript>Javascript is required to use this application.</noscript>
+
+  <script>
+    if (navigator.storage && navigator.storage.persist) {
+      const hasStorage = navigator.storage;
+      const hasPersist = hasStorage && navigator.storage.persist;
+
+      const storageManager = hasStorage && navigator.storage;
+      const estimate = storageManager.estimate();
+
+      console.log(estimate);
+      navigator.storage.persist().then(granted => {
+        console.log(estimate);
+
+        // if (granted) {
+        //   console.log(estimate);
+        // } else {
+        //   console.log(estimate);
+        // }
+      });
+    };
+  </script>
 </head>
+
 <body class="default-theme">
   <app-root></app-root>
 </body>
+
 </html>

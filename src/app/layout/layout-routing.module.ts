@@ -11,12 +11,17 @@ const routes: Routes = [
         component: LayoutComponent,
         children: [
             { path: '', redirectTo: '/app/home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+            {
+                path: 'home',
+                component: HomeComponent,
+                canActivate: [AuthGuard],
+                data: { title: 'Home' }
+            },
             {
                 path: 'dashboard',
                 loadChildren: '../dashboard/dashboard.module#DashboardModule',
                 canActivate: [AuthGuard],
-                data: { right: Right.dashboard }
+                data: { right: Right.dashboard, title: 'Dashboard' }
             }
         ]
     }

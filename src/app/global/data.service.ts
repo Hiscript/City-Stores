@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { throwError as observableThrowError, Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, finalize } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
+import { LoadingService } from './loading.service';
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,11 @@ import { Router } from '@angular/router';
 export class DataService {
     baseUrl = environment.apiUrl;
 
-    constructor(private httpClient: HttpClient, private router: Router) {}
+    constructor(
+        private httpClient: HttpClient,
+        private router: Router,
+        private loadingService: LoadingService
+    ) {}
 
     get<T>(url: string): Observable<T> {
         return this.httpClient
@@ -19,16 +24,18 @@ export class DataService {
             .pipe(catchError(res => this.handleError(res)));
     }
 
-    post<T>(url: string, body: any): Observable<T> {
-        return this.httpClient
-            .post<T>(this.baseUrl + url, body)
-            .pipe(catchError(res => this.handleError(res)));
+    post<T>(url: string, body: any, entity: string = ''): Observable<T> {
+        this.loadingService.start(entity);
+        return this.httpClient.post<T>(this.baseUrl + url, body).pipe(
+            catchError(res => this.handleError(res)),
+            finalize(() => this.loadingService.stop())
+        );
     }
 
     private handleError(response: Response | any) {
         switch (response.status) {
             case 400:
-                this.router.navigate(['/exception/internalerror']);
+                // this.router.navigate(['/exception/internalerror']);
                 break;
             case 401:
                 this.router.navigate(['/auth/login']);

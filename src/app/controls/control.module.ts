@@ -8,7 +8,8 @@ import {
     PhoneControlComponent,
     TextControlComponent
 } from './';
-import { MaterialModule } from '../shared/material/material.module';
+import { MaterialModule } from '../material/material.module';
+
 
 @NgModule({
     imports: [CommonModule, MaterialModule, ReactiveFormsModule],

@@ -11,10 +11,12 @@ import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestInterceptor } from './global/request.interceptor';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
     declarations: [AppComponent],
     imports: [
+        LayoutModule,
         CommonModule,
         BrowserModule,
         AppRoutingModule,

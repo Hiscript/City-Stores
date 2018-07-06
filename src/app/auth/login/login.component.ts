@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         if (this.loginForm.valid) {
             this.updateModel();
             this.authService.login(this.loginModel).subscribe(tokens => {
-                if (tokens.length == 1) {
+                if (tokens.length === 1) {
                     this.tokenService.setToken(tokens[0].token, this.loginModel.Remember);
                     this.router.navigate(['/app/home']);
                 }

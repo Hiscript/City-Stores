@@ -1,5 +1,8 @@
 <mat-toolbar class="app-header">
-    <button mat-icon-button class="toggle-sidebar-btn" (click)="toggle()">
+    <button mat-button class="toggle-sidebar-btn header-btn" (click)="toggle()">
         <mat-icon class="material-icons">menu</mat-icon>
+    </button>
+    <button mat-button (click)="toggle()" class="header-btn">
+        <mat-icon class="material-icons">search</mat-icon>
     </button>
 </mat-toolbar>

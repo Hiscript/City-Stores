@@ -10,6 +10,6 @@ export class AuthService {
     constructor(private dataService: DataService) {}
 
     login(login: LoginModel): Observable<TenantToken[]> {
-        return this.dataService.post<TenantToken[]>(this.url + '/login', login);
+        return this.dataService.post<TenantToken[]>(this.url + '/login', login, 'login');
     }
 }
