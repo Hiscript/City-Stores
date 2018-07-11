@@ -4,15 +4,33 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
     imports: [
+        MatTooltipModule,
         MatButtonModule,
         MatIconModule,
         MatInputModule,
         MatSnackBarModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        MatTableModule,
+        MatSelectModule,
+        MatListModule
     ],
-    exports: [MatButtonModule, MatIconModule, MatInputModule, MatSnackBarModule, MatFormFieldModule]
+    exports: [
+        MatTooltipModule,
+        MatButtonModule,
+        MatIconModule,
+        MatInputModule,
+        MatSnackBarModule,
+        MatFormFieldModule,
+        MatTableModule,
+        MatSelectModule,
+        MatListModule
+    ]
 })
 export class MaterialModule {}

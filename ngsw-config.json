@@ -20,11 +20,11 @@
     "dataGroups": [
         {
             "name": "api",
-            "urls": ["/menus"],
+            "urls": ["/menus", "/columns", "/customers"],
             "cacheConfig": {
                 "strategy": "performance",
                 "maxSize": 100,
-                "maxAge": "3d"
+                "maxAge": "365d"
             }
         }
     ]

@@ -40,7 +40,6 @@ export class TokenService {
     }
 
     hasRight(right: Right) {
-        console.log(right.toString());
         return this.getUserRights().indexOf(right.toString()) > -1;
     }
 }

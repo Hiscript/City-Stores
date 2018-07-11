@@ -26,7 +26,7 @@
                     <mat-icon class="expand-icon">expand_more</mat-icon>
                 </mat-list-item>
                 <div class="child">
-                    <mat-list-item *ngFor="let subMenu of menu.subMenus" [routerLink]="menu.linkURL">
+                    <mat-list-item *ngFor="let subMenu of menu.subMenus" [routerLink]="subMenu.linkURL">
                         <mat-icon mat-list-icon></mat-icon>
                         <a matLine class="nav-text">{{subMenu.menuName}}</a>
                     </mat-list-item>

@@ -1,3 +1,7 @@
+.spacer{
+    flex: 1 1 auto;
+}
+
 @mixin divider() {
     display: block;
     border: 0;

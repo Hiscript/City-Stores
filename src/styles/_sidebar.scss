@@ -1,8 +1,8 @@
-mat-sidenav-content {
+.nav-sidebar-content {
     transition: margin 0.3s ease-in-out;
 }
 
-mat-sidenav {
+.nav-sidebar {
     overflow-x: hidden;
     background-color: #333c44 !important;
     width: $sidenav-width;
@@ -64,7 +64,7 @@ mat-sidenav {
 }
 
 .collapsed {
-    mat-sidenav {
+    .nav-sidebar {
         width: 60px !important;
 
         a.collapsednav-toggler {
@@ -80,21 +80,21 @@ mat-sidenav {
             }
         }
     }
-    mat-sidenav-content {
+    .nav-sidebar-content {
         margin-left: 60px !important;
     }
 
     @media only screen and (max-width: map-get($grid-breakpoints, lg) - 1) {
-        mat-sidenav {
+        .nav-sidebar {
             width: 0px !important;
         }
-        mat-sidenav-content {
+        .nav-sidebar-content {
             margin-left: 0px !important;
         }
     }
 }
 
-.mat-sidenav:hover {
+.nav-sidebar:hover {
     width: $sidenav-width !important;
 
     .brand {

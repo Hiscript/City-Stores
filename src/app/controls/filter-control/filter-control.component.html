@@ -1,0 +1,38 @@
+<div class="mat-h2">Search</div>
+<form (ngSubmit)="submit()" id="ngForm" [formGroup]="filterForm" novalidate class="full-height">
+    <div *ngFor="let item of filters">
+        <div class="form-field" [ngSwitch]="item.controlTypeId">
+            <!-- Textbox -->
+            <div *ngSwitchCase="1">
+                <text-control [label]="item.displayName" [control]="filterForm.controls[item.columnName]"></text-control>
+            </div>
+            <!--Numeric Textbox -->
+            <div *ngSwitchCase="2">
+                <!-- <number-control width="300px" [label]="item.DisplayName" [control]="filterForm.controls[item.ColumnName]"></number-control> -->
+            </div>
+            <!--Decimal Textbox -->
+            <div *ngSwitchCase="3">
+                <!-- <decimal-control width="300px" [label]="item.DisplayName" [control]="filterForm.controls[item.ColumnName]"></decimal-control> -->
+            </div>
+            <!-- Datepicker -->
+            <div *ngSwitchCase="4">
+                <!-- <date-control width="150px" [label]="item.DisplayName +' (From)'" [control]="filterForm.controls[item.ColumnName+'From']"></date-control>
+                <date-control width="150px" [label]="item.DisplayName +' (To)'" [control]="filterForm.controls[item.ColumnName+'To']"></date-control> -->
+            </div>
+            <!-- Dropdown -->
+            <div *ngSwitchCase="5">
+                <!-- <dropdown-control width="300px" [label]="item.DisplayName" forFilter="true" [dropdownDataId]="item.DropdownDataId" [control]="filterForm.controls[item.ColumnName]"></dropdown-control> -->
+            </div>
+            <!-- Autocomplete -->
+            <div *ngSwitchCase="6">
+                <!-- <autocomplete-control width="300px" forFilter="true" [dropdownDataId]="item.DropdownDataId" [label]="item.DisplayName" [control]="filterForm.controls[item.ColumnName]"></autocomplete-control> -->
+            </div>
+            <!-- Category -->
+            <div *ngSwitchCase="7">
+                <!-- <category-control width="300px" forFilter="true" [label]="item.DisplayName" [control]="filterForm.controls[item.ColumnName]"></category-control> -->
+            </div>
+        </div>
+    </div>
+    <button mat-raised-button type="submit" color="primary"> Apply
+    </button>
+</form>

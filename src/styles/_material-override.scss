@@ -1,6 +1,32 @@
+// Table
+.mat-table {
+    width: 100% !important;
+}
+.mat-cell,
+.mat-header-cell {
+    padding: 0px 5px !important;
+}
+td.mat-cell:first-child,
+td.mat-footer-cell:first-child,
+th.mat-header-cell:first-child {
+    padding-left: 24px !important;
+}
+td.mat-cell:last-child,
+td.mat-footer-cell:last-child,
+th.mat-header-cell:last-child {
+    padding-right: 24px !important;
+}
 
-
-
+.mat-paginator{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.table-container{
+    padding-bottom: 56px;
+}
 // Outline
 .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-end,
 .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-gap,

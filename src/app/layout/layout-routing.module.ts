@@ -22,6 +22,11 @@ const routes: Routes = [
                 loadChildren: '../dashboard/dashboard.module#DashboardModule',
                 canActivate: [AuthGuard],
                 data: { right: Right.dashboard, title: 'Dashboard' }
+            },
+            {
+                path: 'sale',
+                loadChildren: '../sale/sale.module#SaleModule',
+                canActivate: [AuthGuard]
             }
         ]
     }

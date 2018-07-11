@@ -1,0 +1,15 @@
+.clickable:hover {
+    background-color: rgba(0, 0, 0, 0.03) !important;
+    cursor: pointer;
+}
+
+td.image {
+    width: 70px;
+    .mat-icon {
+        color: $gray-500;
+    }
+}
+
+td.status{
+    width: 70px;
+}

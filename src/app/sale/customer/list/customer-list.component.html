@@ -1,0 +1,8 @@
+<div class="page-title">
+    Customers
+</div>
+<div class="page-content">
+    <grid-control *ngIf="!device.handset" [gridType]="gridType" [data]="customers" searchColumns="CustomerNo,CustomerName,Mobile" [statuses]="statuses"></grid-control>
+
+    <list-control *ngIf="device.handset" [gridType]="gridType" [data]="customers"></list-control>
+</div>

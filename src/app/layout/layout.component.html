@@ -1,5 +1,5 @@
 <mat-sidenav-container class="app-container" hasBackdrop="false" [ngClass]="{'collapsed': navCollapsed}">
-    <mat-sidenav [mode]="device.handset ? 'over' : 'side'" [opened]="!navClosed">
+    <mat-sidenav class="nav-sidebar" [mode]="device.handset ? 'over' : 'side'" [opened]="!navClosed">
         <div class="sidebar-header">
             <div class="brand">
                 <span class="full">
@@ -16,12 +16,12 @@
         </div>
         <app-nav></app-nav>
     </mat-sidenav>
-    <mat-sidenav-content (scroll)="onWindowScroll($event)">
+    <mat-sidenav-content class="nav-sidebar-content" (scroll)="onWindowScroll($event)">
         <app-header (toggleNav)="toggleCollapsedNav()" [ngClass]="{'fixed': fixedHeader}"></app-header>
-        <div class="app-content">
-            <div class="full-height" [@routeAnimation]="getState(o)">
-                <router-outlet #o="outlet"></router-outlet>
-            </div>
+        <div class="app-content" [@routeAnimation]="getState(o)">
+
+            <router-outlet #o="outlet"></router-outlet>
+
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

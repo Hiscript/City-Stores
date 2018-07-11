@@ -1,0 +1,18 @@
+.data-list {
+    .number {
+        font-size: 10px !important;
+        color: $gray-500 !important;
+        margin-bottom: 5px !important;
+    }
+    .header {
+        margin-bottom: 5px !important;
+    }
+    .subheader{
+        color: $gray-600 !important;
+        margin-bottom: 5px !important;
+    }
+
+    .mat-list-item{
+        border-bottom: 1px solid $border;
+    }
+}

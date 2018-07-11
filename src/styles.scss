@@ -1,17 +1,19 @@
-@import "~@angular/material/theming";
+@import '~@angular/material/theming';
 @include mat-core();
 
-@import "styles/_variables";
-@import "styles/_themes";
+@import 'styles/_variables';
+@import 'styles/_themes';
 
-@import "styles/base";
-@import "styles/auth";
-@import "styles/typography";
-@import "styles/_material-override";
-@import "styles/_space";
-@import "styles/_sidebar";
-@import "styles/_layout";
+@import 'styles/base';
+@import 'styles/auth';
+@import 'styles/typography';
+@import 'styles/_material-override';
+@import 'styles/_space';
+@import 'styles/_sidebar';
+@import 'styles/_layout';
+@import 'styles/_table';
+@import 'styles/_list';
 
 .default-theme {
-  @include angular-material-theme($default-theme);
+    @include angular-material-theme($default-theme);
 }
