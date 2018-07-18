@@ -1,0 +1,12 @@
+<div mat-dialog-title fxLayout="row">
+    <button mat-button fxHide.gt-md="true" (click)="back()" class="header-btn back">
+        <mat-icon class="material-icons">arrow_back</mat-icon>
+    </button>
+    <div class="spacer"></div>
+    <button mat-button fxHide.lt-lg="true" (click)="back()" class="header-btn close">
+        <mat-icon class="material-icons">close</mat-icon>
+    </button>
+</div>
+<div mat-dialog-content class="image-viewer">
+    <img [src]="imageURL" alt="no-image" />
+</div>

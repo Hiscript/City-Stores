@@ -6,13 +6,14 @@ import {
     DateTimeStringPipe,
     QuantityStringPipe
 } from './pipes';
-import { LoadingDirective, StatusDirective } from './directives';
+import { LoadingButtonDirective, LoadingBarDirective, StatusDirective } from './directives';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
     imports: [FlexLayoutModule],
     declarations: [
-        LoadingDirective,
+        LoadingButtonDirective,
+        LoadingBarDirective,
         StatusDirective,
 
         StatusPipe,
@@ -24,7 +25,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     exports: [
         FlexLayoutModule,
 
-        LoadingDirective,
+        LoadingButtonDirective,
+        LoadingBarDirective,
         StatusDirective,
 
         StatusPipe,

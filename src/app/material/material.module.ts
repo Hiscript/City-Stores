@@ -8,29 +8,44 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
     imports: [
         MatTooltipModule,
         MatButtonModule,
+        MatCheckboxModule,
         MatIconModule,
         MatInputModule,
         MatSnackBarModule,
         MatFormFieldModule,
         MatTableModule,
         MatSelectModule,
-        MatListModule
+        MatListModule,
+        MatProgressBarModule,
+        MatToolbarModule,
+        MatTabsModule,
+        MatDialogModule
     ],
     exports: [
         MatTooltipModule,
         MatButtonModule,
+        MatCheckboxModule,
         MatIconModule,
         MatInputModule,
         MatSnackBarModule,
         MatFormFieldModule,
         MatTableModule,
         MatSelectModule,
-        MatListModule
+        MatListModule,
+        MatProgressBarModule,
+        MatToolbarModule,
+        MatTabsModule,
+        MatDialogModule
     ]
 })
 export class MaterialModule {}

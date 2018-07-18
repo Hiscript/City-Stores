@@ -18,23 +18,34 @@ export class DataService {
         private loadingService: LoadingService
     ) {}
 
-    get<T>(url: string): Observable<T> {
-        return this.httpClient
-            .get<T>(this.baseUrl + url)
-            .pipe(catchError(res => this.handleError(res)));
+    get<T>(url: string, entity: string = ''): Observable<T> {
+        this.loadingService.add(entity);
+        return this.httpClient.get<T>(this.baseUrl + url).pipe(
+            catchError(res => this.handleError(res)),
+            finalize(() => this.loadingService.remove(entity))
+        );
     }
 
     post<T>(url: string, body: any, entity: string = ''): Observable<T> {
-        this.loadingService.start(entity);
+        this.loadingService.add(entity);
         return this.httpClient.post<T>(this.baseUrl + url, body).pipe(
             catchError(res => this.handleError(res)),
-            finalize(() => this.loadingService.stop())
+            finalize(() => this.loadingService.remove(entity))
+        );
+    }
+
+    put<T>(url: string, body: any, entity: string = ''): Observable<T> {
+        this.loadingService.add(entity);
+        return this.httpClient.put<T>(this.baseUrl + url, body).pipe(
+            catchError(res => this.handleError(res)),
+            finalize(() => this.loadingService.remove(entity))
         );
     }
 
     private handleError(response: Response | any) {
         switch (response.status) {
             case 400:
+                console.log(response);
                 // this.router.navigate(['/exception/internalerror']);
                 break;
             case 401:

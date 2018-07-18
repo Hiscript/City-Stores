@@ -1,17 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class LoadingService {
-    entity = new Subject<string>();
+    entities = new BehaviorSubject<string[]>([]);
 
-    start(entity: string) {
-        this.entity.next(entity);
+    add(entity: string) {
+        const existing = this.entities.getValue();
+        existing.push(entity);
+        this.entities.next(existing);
     }
 
-    stop() {
-        this.entity.next();
+    remove(entity: string) {
+        const existing = this.entities.getValue();
+        const index = existing.indexOf(entity);
+        if (index > -1) {
+            existing.splice(index, 1);
+        }
+        this.entities.next(existing);
+    }
+
+    has(entity: string): boolean {
+        return this.entities.getValue().indexOf(entity) > -1;
     }
 }

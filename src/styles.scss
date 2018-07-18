@@ -13,6 +13,8 @@
 @import 'styles/_layout';
 @import 'styles/_table';
 @import 'styles/_list';
+@import 'styles/_image';
+@import 'styles/_box';
 
 .default-theme {
     @include angular-material-theme($default-theme);

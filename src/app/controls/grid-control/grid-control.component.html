@@ -21,7 +21,7 @@
                 <i class="material-icons">filter_list</i>
             </button>
         </div>
-
+        <mat-progress-bar mode="indeterminate" loading-bar="search"></mat-progress-bar>
         <div class="table-container">
             <table mat-table #table [dataSource]="(data | async)?.items" matSort>
                 <ng-container *ngFor="let column of gridColumns" [matColumnDef]="column.columnDef">
@@ -34,14 +34,14 @@
                             <span [status]="row[column.columnDef]">{{row[column.columnDef] | status}}</span>
                         </td>
                         <td *ngSwitchCase="9" mat-cell class="image">
-                            <img *ngIf="row[column.columnDef]" [src]="imageEndPoint+row[column.columnDef]" alt="no-image" />
+                            <img *ngIf="row[column.columnDef]" [src]="document.getIconURL(row[column.columnDef])" alt="no-image" />
                             <mat-icon *ngIf="!row[column.columnDef]">image</mat-icon>
                         </td>
                         <td *ngSwitchDefault mat-cell>{{row[column.columnDef]}}</td>
                     </ng-container>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
-                <tr mat-row class="clickable" (click)="select(row.Id)" *matRowDef="let row; columns:displayColumns;"></tr>
+                <tr mat-row class="clickable" (click)="select(row.id)" *matRowDef="let row; columns:displayColumns;"></tr>
             </table>
         </div>
         <mat-paginator #paginator [length]="(data | async)?.total" [ngStyle]="{display: (data | async)?.total > 15?'block':'none'}"

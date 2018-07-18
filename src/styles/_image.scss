@@ -1,0 +1,94 @@
+.image-container {
+    position: relative;
+
+    .no-image {
+        border: 2px dashed $border;
+        cursor: pointer;
+        color: $gray-500;
+        font-size: 28px;
+        line-height: 250px;
+        text-align: center;
+        .mat-icon{
+            height: 48px !important;
+            width: 48px !important;
+        }
+        .material-icons {
+            font-size: 48px !important;
+        }
+
+        @media only screen and (max-width: map-get($grid-breakpoints, lg) - 1) {
+            line-height: 100px;
+        }
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    @media only screen and (max-width: map-get($grid-breakpoints, lg) - 1) {
+        max-height: 100px;
+        max-width: 100px;
+    }
+
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        background: rgb(0, 0, 0);
+        background: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        transition: 0.2s ease-in-out;
+        opacity: 0;
+        height: 100%;
+        text-align: center;
+
+        .buttons {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 36px;
+            width: 100%;
+            margin: -18px 0 0 0;
+        }
+    }
+}
+.image-container:hover {
+    .overlay {
+        opacity: 1;
+    }
+}
+
+.no-image:hover {
+    border-color: $gray-500;
+    color: $gray-500;
+}
+
+.image-editor {
+    .preview-container {
+        height: 100%;
+    }
+}
+
+.thumb-preview {
+    height: 250px;
+    width: 250px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.8), 0 8px 10px -6px rgba(0, 0, 0, 0.6);
+}
+
+.icon-preview {
+    height: 40px;
+    max-width: 40px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.8), 0 8px 10px -6px rgba(0, 0, 0, 0.6);
+}
+
+.image-viewer {
+    background-color: $gray-800;
+    text-align: center;
+    img {
+        max-width: 100%;
+        box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.8), 0 8px 10px -6px rgba(0, 0, 0, 0.6);
+    }
+}

@@ -1,8 +1,16 @@
-<div class="page-title">
+<mat-toolbar class="page-title">
     Customers
-</div>
+    <div class="spacer"></div>
+    <button mat-flat-button color="primary" (click)="add()" fxHide.lt-lg="true">
+        Add New Customer
+    </button>
+    <button mat-button color="primary" (click)="add()" class="header-btn" fxHide.gt-md="true">
+        <mat-icon class="material-icons">add</mat-icon>
+    </button>
+</mat-toolbar>
 <div class="page-content">
-    <grid-control *ngIf="!device.handset" [gridType]="gridType" [data]="customers" searchColumns="CustomerNo,CustomerName,Mobile" [statuses]="statuses"></grid-control>
+    <grid-control *ngIf="!device.handset" [gridType]="gridType" [data]="customers" searchColumns="CustomerNo,CustomerName,Mobile"
+        [statuses]="statuses" (selected)="select($event)"></grid-control>
 
-    <list-control *ngIf="device.handset" [gridType]="gridType" [data]="customers"></list-control>
+    <list-control *ngIf="device.handset" [gridType]="gridType" [data]="customers" (selected)="select($event)"></list-control>
 </div>

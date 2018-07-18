@@ -3,7 +3,10 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "module": "es2015",
-    "types": []
+    /*
+    * Removed because of aws-sdk error. 
+    */
+    // "types": []
   },
   "exclude": [
     "src/test.ts",

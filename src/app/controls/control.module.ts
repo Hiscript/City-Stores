@@ -9,6 +9,7 @@ import {
     EmailControlComponent,
     PhoneControlComponent,
     TextControlComponent,
+    TextAreaControlComponent,
     ListControlComponent,
     FilterControlComponent
 } from './';
@@ -31,6 +32,7 @@ import { SharedModule } from '../shared/shared.module';
         ErrorMessagePipe,
         // controls
         TextControlComponent,
+        TextAreaControlComponent,
         EmailControlComponent,
         PhoneControlComponent,
         GridControlComponent,
@@ -40,6 +42,7 @@ import { SharedModule } from '../shared/shared.module';
     exports: [
         // controls
         TextControlComponent,
+        TextAreaControlComponent,
         EmailControlComponent,
         PhoneControlComponent,
         GridControlComponent,

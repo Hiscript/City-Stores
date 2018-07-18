@@ -1,0 +1,6 @@
+<mat-form-field appearance="outline" [ngStyle]="{'width': width}" style="max-width: 100%">
+    <mat-label *ngIf="label">{{label}}</mat-label>
+    <textarea matInput [placeholder]="placeholder" [formControl]="control" [required]="required" [maxlength]="maxlength" [rows]="rows"></textarea>
+    <mat-hint align="end">{{hint}}</mat-hint>
+    <mat-error>{{control.errors | errorMessage}}</mat-error>
+</mat-form-field>

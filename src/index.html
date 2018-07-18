@@ -16,6 +16,10 @@
   <noscript>Javascript is required to use this application.</noscript>
 
   <script>
+    
+    // For resolve aws-sdk runtime error: global is not defined.
+    var global = global || window;
+  
     if (navigator.storage && navigator.storage.persist) {
       const hasStorage = navigator.storage;
       const hasPersist = hasStorage && navigator.storage.persist;

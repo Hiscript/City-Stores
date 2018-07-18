@@ -1,0 +1,22 @@
+<div class="padding-15" fxLayout="row" fxLayout.lt-lg="column" fxLayoutGap="15px">
+    <div fxFlex="250px" fxFlex.lt-lg="1">
+        <single-image entity="customers" [key]="customer.imageURL" (updated)="changeImage($event)"></single-image>
+    </div>
+    <div fxFlex="100%-250px">
+        <form (ngSubmit)="submit()" [formGroup]="customerForm" novalidate class="box white sm-pad-0">
+            <div>
+                <text-control required="true" label="Customer Name" placeholder="Enter Customer's Name" [control]="customerForm.controls.customerName"></text-control>
+            </div>
+            <div>
+                <phone-control label="Mobile No." placeholder="Enter Mobile Number" [control]="customerForm.controls.mobile"></phone-control>
+            </div>
+            <div>
+                <email-control label="Email" placeholder="Enter Email" [control]="customerForm.controls.email"></email-control>
+            </div>
+            <div>
+                <textarea-control rows="4" label="Notes" [control]="customerForm.controls.note"></textarea-control>
+            </div>
+            <button mat-flat-button type="submit" color="primary" loading-button="customer">Save</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div mat-dialog-title fxLayout="row">
+    <button mat-button fxHide.gt-md="true" (click)="back()" class="header-btn back">
+        <mat-icon class="material-icons">arrow_back</mat-icon>
+    </button>
+    Edit Image
+    <div class="spacer"></div>
+    <button mat-button fxHide.lt-lg="true" (click)="back()" class="header-btn close">
+        <mat-icon class="material-icons">close</mat-icon>
+    </button>
+</div>
+<div mat-dialog-content class="image-editor" fxLayout="row" fxLayoutGap="15px">
+    <div class="preview-container" fxFlex="(100% - 250px)" fxFlex.lt-lg="100%">
+        <img src="#" class="preview" #image/>
+    </div>
+    <div fxFlex="250px" fxHide.lt-lg="true">
+        <div class="mat-h1">Preview</div>
+        <div class="thumb-preview" #thumb></div>
+        <div class="divider divider-md"></div>
+        <div class="icon-preview" #icon></div>
+    </div>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-icon-button class="square" (click)="setAspectRatio(1)" [ngClass]="{'active': userSettings.defaultAspectRatio === 1}">
+        <mat-icon class="material-icons">crop_square</mat-icon>
+    </button>
+    <button mat-icon-button class="square" (click)="setAspectRatio(0.6666667)" [ngClass]="{'active': userSettings.defaultAspectRatio === 0.6666667}">
+        <mat-icon class="material-icons">crop_portrait</mat-icon>
+    </button>
+    <button mat-icon-button class="square" (click)="setAspectRatio(1.5)" [ngClass]="{'active': userSettings.defaultAspectRatio === 1.5}">
+        <mat-icon class="material-icons">crop_landscape</mat-icon>
+    </button>
+    <div class="spacer"></div>
+    <button mat-flat-button color="primary" (click)="done()">
+        OK
+    </button>
+</div>

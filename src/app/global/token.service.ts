@@ -14,6 +14,14 @@ export class TokenService {
         }
     }
 
+    get tenantId(): string {
+        return this.getDecodedToken().t;
+    }
+
+    get userId(): string {
+        return this.getDecodedToken().u;
+    }
+
     setToken(token: string, remember: boolean) {
         if (remember) {
             localStorage.setItem('token', token);

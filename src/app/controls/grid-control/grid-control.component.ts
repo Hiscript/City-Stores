@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, ElementRef, ViewChild } from '@angular/core';
+import {
+    Component,
+    Input,
+    OnInit,
+    ElementRef,
+    ViewChild,
+    Output,
+    EventEmitter
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { GridData } from '../../classes/grid-data';
 import { GridType } from '../../classes/grid-type.enum';
@@ -12,6 +20,7 @@ import { DeviceService } from '../../global/device.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { SearchTerm } from '../../classes/search-term';
+import { DocumentService } from '../../global/document.service';
 
 @Component({
     selector: 'grid-control',
@@ -22,6 +31,8 @@ export class GridControlComponent implements OnInit {
     @Input() gridType: GridType;
     @Input() searchColumns: string;
     @Input() statuses: any[];
+
+    @Output() selected: EventEmitter<number> = new EventEmitter<number>();
 
     navClosed = true;
 
@@ -39,7 +50,8 @@ export class GridControlComponent implements OnInit {
         elementRef: ElementRef,
         private columnService: ColumnService,
         private searchService: SearchService,
-        public device: DeviceService
+        public device: DeviceService,
+        public document: DocumentService
     ) {
         this.subscribeFilter();
 
@@ -120,5 +132,9 @@ export class GridControlComponent implements OnInit {
 
     applyFilter(terms: SearchTerm[]) {
         this.searchService.SearchTerms.next(terms);
+    }
+
+    select(id: number): void {
+        this.selected.emit(id);
     }
 }

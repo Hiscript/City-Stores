@@ -1,4 +1,12 @@
-import { Component, Input, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+    Component,
+    Input,
+    ElementRef,
+    OnInit,
+    ViewChild,
+    Output,
+    EventEmitter
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { GridData } from '../../classes/grid-data';
 import { SearchService } from '../../global/search.service';
@@ -17,6 +25,8 @@ import { SearchTerm } from '../../classes/search-term';
 export class ListControlComponent implements OnInit {
     @Input() data: Observable<GridData>;
     @Input() gridType: GridType;
+
+    @Output() selected: EventEmitter<number> = new EventEmitter<number>();
 
     navClosed = true;
     filters: Column[];
@@ -60,5 +70,9 @@ export class ListControlComponent implements OnInit {
     applyFilter(terms: SearchTerm[]) {
         this.searchService.SearchTerms.next(terms);
         this.navClosed = true;
+    }
+
+    select(id: number): void {
+        this.selected.emit(id);
     }
 }

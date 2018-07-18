@@ -1,0 +1,47 @@
+<mat-toolbar class="page-title">
+    <button mat-button (click)="back()" class="header-btn back-arrow">
+        <mat-icon class="material-icons">arrow_back</mat-icon>
+    </button>
+    {{customer.customerName?customer.customerName:'New Customer'}}
+</mat-toolbar>
+
+<div class="page-content">
+    <mat-tab-group class="page-tab" [selectedIndex]="tabIndex" (selectedIndexChange)="tabIndex=$event">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon *ngIf="device.handset">details</mat-icon>
+                <span *ngIf="!device.handset">DETAIL</span>
+            </ng-template>
+            <ng-template matTabContent>
+                <customer-overview [customer]="customer" (saved)="customer = $event"></customer-overview>
+            </ng-template>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon *ngIf="device.handset">place</mat-icon>
+                <span *ngIf="!device.handset">ADDRESSES</span>
+            </ng-template>
+            <ng-template matTabContent>
+                <customer-address></customer-address>
+            </ng-template>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon *ngIf="device.handset">shopping_cart</mat-icon>
+                <span *ngIf="!device.handset">SALES</span>
+            </ng-template>
+            <ng-template matTabContent>
+                <customer-address></customer-address>
+            </ng-template>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon *ngIf="device.handset">settings</mat-icon>
+                <span *ngIf="!device.handset">SETTINGS</span>
+            </ng-template>
+            <ng-template matTabContent>
+                <customer-address></customer-address>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+</div>

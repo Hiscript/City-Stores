@@ -3,8 +3,9 @@
         <filter-control *ngIf="filters" [filters]="filters" (apply)="applyFilter($event)"></filter-control>
     </mat-sidenav>
     <mat-sidenav-content>
+        <mat-progress-bar mode="indeterminate" loading-bar="search"></mat-progress-bar>
         <mat-nav-list class="data-list">
-            <mat-list-item *ngFor="let item of (data | async)?.items">
+            <mat-list-item *ngFor="let item of (data | async)?.items" (click)="select(item.id)">
                 <div matLine class="header">{{item.header}}</div>
                 <div matLine class="subheader">{{item.subheader}}</div>
                 <div matLine class="number"># {{item.number}} &nbsp;

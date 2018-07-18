@@ -1,0 +1,23 @@
+<div class="image-container">
+    <!-- Image not exists -->
+    <div class="no-image" *ngIf="!imageURL" (click)="fileInput.click()">
+        <mat-icon class="material-icons">add_a_photo</mat-icon>
+    </div>
+
+    <!-- Image exists -->
+    <img [src]="imageURL" alt="no-image" *ngIf="imageURL" (click)="view()"/>
+    <div class="overlay" *ngIf="imageURL" fxHide.lt-lg="true">
+        <div class="buttons">
+            <button mat-flat-button color="default" class="square" matTooltip="View" (click)="view()">
+                <mat-icon class="material-icons">fullscreen</mat-icon>
+            </button>
+            <button mat-flat-button color="default" class="square left-margin-10" matTooltip="Change" (click)="fileInput.click()">
+                <mat-icon class="material-icons">edit</mat-icon>
+            </button>
+            <button mat-flat-button color="warn" (click)="remove()" matTooltip="Remove" class="square left-margin-10">
+                <mat-icon class="material-icons">delete</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+<input style="display: none" type="file" (change)="onFileChanged($event)" accept="image/*" #fileInput>
