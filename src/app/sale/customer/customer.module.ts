@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CustomerRoutingModule } from './customer-routing.module';
 import { CustomerListComponent } from './list/customer-list.component';
-import { CustomerService } from './customer.service';
+import { CustomerService } from './services/customer.service';
 import { ControlModule } from '../../controls/control.module';
 import { SharedModule } from '../../shared/shared.module';
 import { MaterialModule } from '../../material/material.module';
@@ -10,6 +10,8 @@ import { CustomerResolve } from './resolvers/customer.resolve';
 import { CustomerOverviewComponent } from './detail/overview/customer-overview.component';
 import { CustomerAddressComponent } from './detail/address/customer-address.component';
 import { DocumentModule } from '../../document/document.module';
+import { CustomerAddressDetailComponent } from './detail/address/customer-address-detail.component';
+import { CustomerAddressService } from './services/customer-address.service';
 
 @NgModule({
     imports: [CustomerRoutingModule, ControlModule, SharedModule, MaterialModule, DocumentModule],
@@ -17,8 +19,11 @@ import { DocumentModule } from '../../document/document.module';
         CustomerListComponent,
         CustomerDetailComponent,
         CustomerOverviewComponent,
-        CustomerAddressComponent
+
+        CustomerAddressComponent,
+        CustomerAddressDetailComponent
     ],
-    providers: [CustomerService, CustomerResolve]
+    providers: [CustomerService, CustomerResolve, CustomerAddressService],
+    entryComponents: [CustomerAddressDetailComponent]
 })
 export class CustomerModule {}

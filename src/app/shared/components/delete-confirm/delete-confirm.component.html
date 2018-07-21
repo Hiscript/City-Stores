@@ -1,0 +1,14 @@
+<div mat-dialog-title>
+    {{data.title}}
+</div>
+<div mat-dialog-content>
+    {{data.description}}
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-flat-button color="primary" (click)="confirm()">
+        {{data.button}}
+    </button>
+    <button mat-button color="primary" (click)="close()">
+        CANCEL
+    </button>
+</div>

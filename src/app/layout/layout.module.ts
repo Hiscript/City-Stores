@@ -11,7 +11,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { HomeComponent } from '../home/home.component';
-import { AppHeaderComponent, AppNavComponent, AppFooterComponent } from './';
+import { AppHeaderComponent, AppNavComponent, AppFooterComponent } from '.';
 
 @NgModule({
     imports: [

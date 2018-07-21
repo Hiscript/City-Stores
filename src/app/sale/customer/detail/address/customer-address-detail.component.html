@@ -1,0 +1,35 @@
+<div mat-dialog-title fxLayout="row">
+    <button mat-button fxHide.gt-md="true" (click)="close()" class="header-btn back" tabindex="-1">
+        <mat-icon class="material-icons">arrow_back</mat-icon>
+    </button>
+    {{data.address.name?data.address.name:'New Address'}}
+    <div class="spacer"></div>
+    <button mat-button fxHide.lt-lg="true" (click)="close()" class="header-btn close" tabindex="-1">
+        <mat-icon class="material-icons">close</mat-icon>
+    </button>
+</div>
+<div mat-dialog-content>
+    <div class="padding-15">
+        <form id="addressform" (ngSubmit)="submit()" [formGroup]="addressForm" novalidate>
+            <div fxLayout="row wrap" fxLayoutGap="15px" class="pull-in-r">
+                <text-control label="Name" placeholder="Enter Name" required="true" [control]="addressForm.controls.name"></text-control>
+                <phone-control label="Mobile No." placeholder="Enter Mobile No." required="true" [control]="addressForm.controls.mobile"></phone-control>
+                <text-control label="City/Town" placeholder="Enter City Name" required="true" [control]="addressForm.controls.city"></text-control>
+                <text-control label="Pincode" placeholder="Enter Pin Code" required="true" [control]="addressForm.controls.pinCode"></text-control>
+                <textarea-control rows="3" label="Address" placeholder="Enter Street No./Name" required="true" [control]="addressForm.controls.address"></textarea-control>
+                <dropdown-control required="true" label="Address Type" [dropdownType]="dropdownType.CustomerAddress" [control]="addressForm.controls.addressTypeId"></dropdown-control>
+                <text-control label="District" placeholder="Enter Disctrict Name" [control]="addressForm.controls.district"></text-control>
+                <text-control label="State/Province" placeholder="Enter State Name" [control]="addressForm.controls.state"></text-control>
+            </div>
+        </form>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button color="warn" (click)="remove()" matTooltip="Remove" class="square" *ngIf="data.address.customerAddressId>0">
+        <mat-icon class="material-icons">delete</mat-icon>
+    </button>
+    <div class="spacer"></div>
+    <button form="addressform" type="submit" mat-flat-button color="primary">
+        SAVE
+    </button>
+</div>

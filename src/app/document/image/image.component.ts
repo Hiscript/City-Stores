@@ -1,6 +1,5 @@
 import {
     Component,
-    OnInit,
     ViewChild,
     ElementRef,
     Output,
@@ -48,15 +47,17 @@ export class ImageComponent implements OnChanges {
         dialogRef.afterClosed().subscribe(image => {
             if (image) {
                 this.documentService
-                    .uploadImageWithThumb(
+                    .upload(
                         this.entity,
                         event.target.files[0].name,
-                        event.target.files[0].type,
                         image.original,
                         image.thumb,
                         image.icon
                     )
-                    .then(key => this.updated.emit(key));
+                    .then(key => {
+                        this.fileInput.nativeElement.value = '';
+                        this.updated.emit(key);
+                    });
             } else {
                 this.fileInput.nativeElement.value = '';
             }
@@ -71,8 +72,6 @@ export class ImageComponent implements OnChanges {
     }
 
     remove() {
-        this.documentService.deleteWithThumb(this.key).then(x => {
-            this.updated.emit('');
-        });
+        this.updated.emit('');
     }
 }

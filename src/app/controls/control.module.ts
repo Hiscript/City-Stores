@@ -11,8 +11,9 @@ import {
     TextControlComponent,
     TextAreaControlComponent,
     ListControlComponent,
-    FilterControlComponent
-} from './';
+    FilterControlComponent,
+    DropdownControlComponent
+} from '.';
 import { MaterialModule } from '../material/material.module';
 import { GridControlComponent } from './grid-control/grid-control.component';
 import { SharedModule } from '../shared/shared.module';
@@ -37,7 +38,8 @@ import { SharedModule } from '../shared/shared.module';
         PhoneControlComponent,
         GridControlComponent,
         ListControlComponent,
-        FilterControlComponent
+        FilterControlComponent,
+        DropdownControlComponent
     ],
     exports: [
         // controls
@@ -48,6 +50,8 @@ import { SharedModule } from '../shared/shared.module';
         GridControlComponent,
         ListControlComponent,
         FilterControlComponent,
+        DropdownControlComponent,
+
         // modules
         CommonModule,
         ReactiveFormsModule

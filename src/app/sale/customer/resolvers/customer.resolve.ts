@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 
-import { CustomerService } from '../customer.service';
+import { CustomerService } from '../services/customer.service';
 import { Customer } from '../classes/customer';
 
 @Injectable()

@@ -5,7 +5,8 @@
     </div>
 
     <!-- Image exists -->
-    <img [src]="imageURL" alt="no-image" *ngIf="imageURL" (click)="view()"/>
+    <img [src]="imageURL" alt="no-image" *ngIf="imageURL" (click)="view()" />
+
     <div class="overlay" *ngIf="imageURL" fxHide.lt-lg="true">
         <div class="buttons">
             <button mat-flat-button color="default" class="square" matTooltip="View" (click)="view()">

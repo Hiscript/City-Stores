@@ -1,3 +1,4 @@
+// Alignment
 .text-center {
     text-align: center;
 }
@@ -20,4 +21,9 @@
     &.parked {
         background-color: #888;
     }
+}
+
+// Extra
+.line-breaker {
+    white-space: pre-line !important;
 }

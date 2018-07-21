@@ -15,6 +15,7 @@
 @import 'styles/_list';
 @import 'styles/_image';
 @import 'styles/_box';
+@import 'styles/_dialog';
 
 .default-theme {
     @include angular-material-theme($default-theme);

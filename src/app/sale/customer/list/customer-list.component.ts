@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CustomerService } from '../customer.service';
+import { CustomerService } from '../services/customer.service';
 import { Observable, Subject } from 'rxjs';
 import { GridData } from '../../../classes/grid-data';
 import { GridType } from '../../../classes/grid-type.enum';
@@ -7,7 +7,7 @@ import { SearchService } from '../../../global/search.service';
 import { debounceTime, switchMap, takeUntil, finalize } from 'rxjs/operators';
 import { CustomerStatuses } from '../classes/customer-status';
 import { DeviceService } from '../../../global/device.service';
-import { Router } from '../../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
     templateUrl: './customer-list.component.html'

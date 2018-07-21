@@ -1,1 +1,33 @@
-This is address.
+<div class="padding-15">
+    <button mat-flat-button color="primary" (click)="add()">
+        NEW ADDRESS
+    </button>
+    <div class="divider divider-md"></div>
+    <div *ngFor="let address of addresses; let i=index">
+        <div class="box white sm-pad-0 border hover" [ngClass]="{'first': i==0}" (click)="edit(address.customerAddressId)">
+            <span class="mat-body-2">{{address.name}}&nbsp;&nbsp;&nbsp;[{{address.mobile}}]</span>
+            <div class="line-breaker">{{address.address}}</div>
+            <div>
+                <span *ngIf="address.city">{{address.city}}</span>
+                <span *ngIf="address.district">, {{address.district}}</span>
+                <span *ngIf="address.state">, {{address.state}}</span>
+                <span class="mat-body-2"> - {{address.pinCode}}</span>
+            </div>
+            <div>
+                <span class="status-pill">{{address.addressType}}</span>
+            </div>
+            <!--             
+            <div class="overlay" fxHide.lt-lg="true">
+                <div class="buttons">
+                    <button mat-flat-button color="default" class="square left-margin-10" matTooltip="Change" (click)="edit(address.customerAddressId)">
+                        <mat-icon class="material-icons">edit</mat-icon>
+                    </button>
+                    <button mat-flat-button color="warn" (click)="remove(address.customerAddressId)" matTooltip="Remove" class="square left-margin-10">
+                        <mat-icon class="material-icons">delete</mat-icon>
+                    </button>
+                </div>
+            </div> -->
+        </div>
+
+    </div>
+</div>

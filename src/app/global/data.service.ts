@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { throwError as observableThrowError, Observable } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
@@ -11,6 +11,11 @@ import { LoadingService } from './loading.service';
 })
 export class DataService {
     baseUrl = environment.apiUrl;
+    httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json'
+        })
+    };
 
     constructor(
         private httpClient: HttpClient,
@@ -36,7 +41,15 @@ export class DataService {
 
     put<T>(url: string, body: any, entity: string = ''): Observable<T> {
         this.loadingService.add(entity);
-        return this.httpClient.put<T>(this.baseUrl + url, body).pipe(
+        return this.httpClient.put<T>(this.baseUrl + url, body, this.httpOptions).pipe(
+            catchError(res => this.handleError(res)),
+            finalize(() => this.loadingService.remove(entity))
+        );
+    }
+
+    delete<T>(url: string, entity: string = ''): Observable<T> {
+        this.loadingService.add(entity);
+        return this.httpClient.delete<T>(this.baseUrl + url).pipe(
             catchError(res => this.handleError(res)),
             finalize(() => this.loadingService.remove(entity))
         );

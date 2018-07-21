@@ -22,7 +22,7 @@
                 <span *ngIf="!device.handset">ADDRESSES</span>
             </ng-template>
             <ng-template matTabContent>
-                <customer-address></customer-address>
+                <customer-address [customerId]="customer.customerId"></customer-address>
             </ng-template>
         </mat-tab>
         <mat-tab>

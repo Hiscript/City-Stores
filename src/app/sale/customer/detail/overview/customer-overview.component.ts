@@ -1,6 +1,6 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CustomerService } from '../../customer.service';
+import { CustomerService } from '../../services/customer.service';
 import { Customer } from '../../classes/customer';
 
 @Component({
@@ -55,8 +55,11 @@ export class CustomerOverviewComponent implements OnInit {
 
     changeImage(key: string) {
         if (this.customer.customerId > 0) {
-            this.customer.imageURL = key;
-            this.customerService.changeImage(this.customer.customerId, key);
+            this.customerService.changeImage(this.customer.customerId, key).subscribe(changed => {
+                if (changed) {
+                    this.customer.imageURL = key;
+                }
+            });
         } else {
             this.customer.imageURL = key;
         }
