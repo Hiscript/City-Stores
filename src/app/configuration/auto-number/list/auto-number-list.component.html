@@ -1,0 +1,11 @@
+<mat-toolbar class="page-title">
+    Auto Numbers
+</mat-toolbar>
+<div class="page-content padding-15">
+    <div *ngFor="let number of autoNumbers; let i=index">
+        <div class="box white sm-pad-0 border hover" [ngClass]="{'first': i==0}" (click)="edit(number)">
+            <div class="mat-caption">{{number.code}}</div>
+            <div class="mat-h4 color-accent">{{number.preview}}</div>
+        </div>
+    </div>
+</div>

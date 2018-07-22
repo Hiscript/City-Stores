@@ -80,3 +80,11 @@ button.active {
     color: $accent !important;
     background-color: $gray-200 !important;
 }
+
+// List
+.mat-list-item.active {
+    background-color: $white;
+}
+.mat-list-item.active:hover{
+    background-color: $white !important;
+}

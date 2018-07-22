@@ -27,6 +27,11 @@ const routes: Routes = [
                 path: 'sale',
                 loadChildren: '../sale/sale.module#SaleModule',
                 canActivate: [AuthGuard]
+            },
+            {
+                path: 'config',
+                loadChildren: '../configuration/configuration.module#ConfigurationModule',
+                canActivate: [AuthGuard]
             }
         ]
     }

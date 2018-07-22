@@ -16,6 +16,7 @@
 @import 'styles/_image';
 @import 'styles/_box';
 @import 'styles/_dialog';
+@import 'styles/_snack-bar';
 
 .default-theme {
     @include angular-material-theme($default-theme);

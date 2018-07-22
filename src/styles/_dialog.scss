@@ -45,8 +45,13 @@
 
 // DESKTOP: normal, MOBILE: full screen
 .full-sm-dialog {
-    &.double {
-        width: 545px !important;
+    @media (min-width: map-get($grid-breakpoints, md)) {
+        &.double {
+            width: 545px !important;
+        }
+        &.single {
+            width: 280px !important;
+        }
     }
 
     @media only screen and (max-width: map-get($grid-breakpoints, lg) - 1) {

@@ -3,6 +3,17 @@
     text-align: center;
 }
 
+// Colors
+.color-primary {
+    color: $primary;
+}
+.color-accent {
+    color: $accent;
+}
+.color-warn {
+    color: $warn;
+}
+
 // Status Pills
 .status-pill {
     background-color: #888;

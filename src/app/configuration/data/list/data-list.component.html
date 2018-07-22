@@ -1,0 +1,16 @@
+<mat-toolbar class="page-title">
+    <button mat-button (click)="back()" class="header-btn back-arrow" *ngIf="typeName">
+        <mat-icon class="material-icons">arrow_back</mat-icon>
+    </button>
+    {{typeName?typeName:'Data'}}
+</mat-toolbar>
+<div class="page-content">
+    <div fxLayout="row">
+        <div fxFlex.gt-md="250px" [fxHide.lt-lg]="showOutlet">
+            <data-type></data-type>
+        </div>
+        <div fxFlex [fxHide.lt-lg]="!showOutlet" class="box white">
+            <router-outlet (activate)="routeActive($event)" (deactivate)="routeDeactive($event)"></router-outlet>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<mat-form-field [appearance]="appearance" [ngStyle]="{'width': width}" style="max-width: 100%">
+    <mat-label *ngIf="label">{{label}}</mat-label>
+    <input matInput type="text" [placeholder]="placeholder" [formControl]="control" [required]="required">
+    <mat-hint align="end">{{hint}}</mat-hint>
+    <mat-error>{{control.errors | errorMessage}}</mat-error>
+    <div matSuffix class="material-icons" *ngIf="isPercentage">%</div>
+</mat-form-field>

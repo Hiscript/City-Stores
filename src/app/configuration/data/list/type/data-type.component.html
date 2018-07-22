@@ -1,0 +1,9 @@
+<mat-nav-list>
+    <div *ngFor="let group of groups; let i=index">
+        <mat-divider *ngIf="i>0"></mat-divider>
+        <h3 matSubheader>{{group}}</h3>
+        <mat-list-item *ngFor="let type of types | grouping:'lovGroupName':group" (click)="select(type)" [ngClass]="{'active': type.lovTypeId == selectedTypeId}">
+            <span matLine> {{type.lovTypeName}}</span>
+        </mat-list-item>
+    </div>
+</mat-nav-list>

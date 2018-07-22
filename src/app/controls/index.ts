@@ -7,6 +7,8 @@ export * from './list-control/list-control.component';
 export * from './filter-control/filter-control.component';
 export * from './textarea-control/textarea-control.component';
 export * from './dropdown-control/dropdown-control.component';
+export * from './decimal-control/decimal-control.component';
+export * from './number-control/number-control.component';
 
 // pipes
 export * from './pipes/error-message.pipe';

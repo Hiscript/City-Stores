@@ -12,7 +12,9 @@ import {
     TextAreaControlComponent,
     ListControlComponent,
     FilterControlComponent,
-    DropdownControlComponent
+    DropdownControlComponent,
+    DecimalControlComponent,
+    NumberControlComponent
 } from '.';
 import { MaterialModule } from '../material/material.module';
 import { GridControlComponent } from './grid-control/grid-control.component';
@@ -31,6 +33,7 @@ import { SharedModule } from '../shared/shared.module';
     declarations: [
         // pipes
         ErrorMessagePipe,
+
         // controls
         TextControlComponent,
         TextAreaControlComponent,
@@ -39,7 +42,9 @@ import { SharedModule } from '../shared/shared.module';
         GridControlComponent,
         ListControlComponent,
         FilterControlComponent,
-        DropdownControlComponent
+        DropdownControlComponent,
+        DecimalControlComponent,
+        NumberControlComponent
     ],
     exports: [
         // controls
@@ -51,6 +56,8 @@ import { SharedModule } from '../shared/shared.module';
         ListControlComponent,
         FilterControlComponent,
         DropdownControlComponent,
+        DecimalControlComponent,
+        NumberControlComponent,
 
         // modules
         CommonModule,

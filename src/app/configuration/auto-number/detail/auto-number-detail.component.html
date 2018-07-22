@@ -1,0 +1,32 @@
+<div mat-dialog-title fxLayout="row">
+    <button mat-button fxHide.gt-md="true" (click)="close()" class="header-btn back" tabindex="-1">
+        <mat-icon class="material-icons">arrow_back</mat-icon>
+    </button>
+    {{data.code}}
+    <div class="spacer"></div>
+    <button mat-button fxHide.lt-lg="true" (click)="close()" class="header-btn close" tabindex="-1">
+        <mat-icon class="material-icons">close</mat-icon>
+    </button>
+</div>
+<div mat-dialog-content>
+    <div class="padding-15">
+        <form id="autoNumberForm" (ngSubmit)="submit()" [formGroup]="autoNumberForm" novalidate>
+            <div fxLayout="row wrap" fxLayoutGap="15px" class="pull-in-r">
+                <text-control required="true" label="Prefix" maxlength="10" placeholder="Enter Prefix" [hint]="(autoNumberForm.controls.prefix.value?.length || 0) + '/10'"
+                    [control]="autoNumberForm.controls.prefix"></text-control>
+                <number-control required="true" label="Digit" [control]="autoNumberForm.controls.digit">
+                </number-control>
+                <number-control required="true" label="Last Number" [control]="autoNumberForm.controls.lastNumber">
+                </number-control>
+                <div class="mat-title color-accent">
+                    {{preview}}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div mat-dialog-actions align="end">
+    <button form="autoNumberForm" type="submit" mat-flat-button color="primary">
+        SAVE
+    </button>
+</div>

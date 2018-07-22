@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestInterceptor } from './global/request.interceptor';
 import { LayoutModule } from '@angular/cdk/layout';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
     declarations: [AppComponent],
     imports: [
@@ -24,7 +24,10 @@ import { LayoutModule } from '@angular/cdk/layout';
         HttpClientModule,
         ServiceWorkerModule.register('/ngsw-worker.js', {
             enabled: environment.production
-        })
+        }),
+
+        // For displaying error message from server(bad request)
+        MatSnackBarModule
     ],
     providers: [
         {

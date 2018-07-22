@@ -2,6 +2,10 @@
     user-select: text;
     padding: 15px;
     position: relative;
+    &.no-pad{
+        padding: 0px;
+    }
+
     &.white {
         background-color: $white;
     }

@@ -5,6 +5,7 @@ import { catchError, finalize } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { LoadingService } from './loading.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
     providedIn: 'root'
@@ -20,7 +21,8 @@ export class DataService {
     constructor(
         private httpClient: HttpClient,
         private router: Router,
-        private loadingService: LoadingService
+        private loadingService: LoadingService,
+        public snackBar: MatSnackBar
     ) {}
 
     get<T>(url: string, entity: string = ''): Observable<T> {
@@ -58,8 +60,10 @@ export class DataService {
     private handleError(response: Response | any) {
         switch (response.status) {
             case 400:
-                console.log(response);
-                // this.router.navigate(['/exception/internalerror']);
+                this.snackBar.open(response.error, '', {
+                    duration: 0,
+                    panelClass: ['error-snack']
+                });
                 break;
             case 401:
                 this.router.navigate(['/auth/login']);

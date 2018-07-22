@@ -1,0 +1,33 @@
+<div class="mat-h1" fxHide.lt-lg="true">{{typeName}}</div>
+
+<button mat-flat-button color="primary" (click)="add()">
+    ADD ITEM
+</button>
+<div class="divider divider-md"></div>
+
+<div dnd-sortable-container [sortableData]="items">
+    <div *ngFor="let item of items; let i=index" dnd-sortable [sortableIndex]="i" (onDropSuccess)="changeOrder(item,i+1)">
+        <div class="box white sm-pad-0 border" [ngClass]="{'first': i==0}">
+            <div fxLayout="row">
+                <div fxFlex style="line-height: 40px">
+                    <span class="mat-body-2">{{i+1}}.</span>&nbsp;&nbsp;{{item.lovItemName}}&nbsp;&nbsp;
+                    <span class="status-pill mat-caption" *ngIf="item.isDefault">Default</span>&nbsp;&nbsp;
+                    <span class="status-pill mat-caption" *ngIf="item.isSystem">System</span>
+                </div>
+                <div fxFlex="40px">
+                    <button *ngIf="!item.isSystem" mat-icon-button [matMenuTriggerFor]="appMenu" [matMenuTriggerData]="{id: item.lovItemId, default:item.isDefault}">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<mat-menu #appMenu="matMenu">
+    <ng-template matMenuContent let-id="id" let-default="default">
+        <button mat-menu-item (click)="edit(id)">Edit </button>
+        <button mat-menu-item (click)="setDefault(id)">{{default?'Remove Default':'Set Default'}}</button>
+        <button mat-menu-item (click)="delete(id)">Delete</button>
+    </ng-template>
+</mat-menu>
