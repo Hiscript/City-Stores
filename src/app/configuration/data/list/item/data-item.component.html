@@ -6,7 +6,7 @@
 <div class="divider divider-md"></div>
 
 <div dnd-sortable-container [sortableData]="items">
-    <div *ngFor="let item of items; let i=index" dnd-sortable [sortableIndex]="i" (onDropSuccess)="changeOrder(item,i+1)">
+    <div *ngFor="let item of items; let i=index" dnd-sortable [sortableIndex]="i">
         <div class="box white sm-pad-0 border" [ngClass]="{'first': i==0}">
             <div fxLayout="row">
                 <div fxFlex style="line-height: 40px">

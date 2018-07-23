@@ -1,0 +1,29 @@
+<mat-toolbar class="page-title">
+    <button mat-button (click)="back()" class="header-btn back-arrow">
+        <mat-icon class="material-icons">arrow_back</mat-icon>
+    </button>
+    {{category.categoryName?category.categoryName:'New Category'}}
+</mat-toolbar>
+
+<div class="page-content">
+    <mat-tab-group class="page-tab" [selectedIndex]="tabIndex" (selectedIndexChange)="tabIndex=$event">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon *ngIf="device.handset">details</mat-icon>
+                <span *ngIf="!device.handset">DETAIL</span>
+            </ng-template>
+            <ng-template matTabContent>
+                <category-overview [category]="category" (saved)="category = $event"></category-overview>
+            </ng-template>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon *ngIf="device.handset">place</mat-icon>
+                <span *ngIf="!device.handset">ATTRIBUTES</span>
+            </ng-template>
+            <ng-template matTabContent>
+                <category-attribute [categoryId]="category.categoryId"></category-attribute>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+</div>

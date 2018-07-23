@@ -21,7 +21,7 @@
             </div>
             <!-- Dropdown -->
             <div *ngSwitchCase="5">
-                <!-- <dropdown-control width="300px" [label]="item.DisplayName" forFilter="true" [dropdownDataId]="item.DropdownDataId" [control]="filterForm.controls[item.ColumnName]"></dropdown-control> -->
+                <dropdown-control [label]="item.displayName" forFilter="true" [dropdownType]="item.dropdownDataId" [control]="filterForm.controls[item.columnName]"></dropdown-control>
             </div>
             <!-- Autocomplete -->
             <div *ngSwitchCase="6">

@@ -50,7 +50,7 @@ export class FilterControlComponent implements OnInit {
                         case ControlType.dropdown:
                         case ControlType.autoComplete:
                         case ControlType.category:
-                            term.t = this.filterForm.controls[element.columnName].value.Name;
+                            term.t = this.filterForm.controls[element.columnName].value.name;
                             break;
                         default:
                             term.t = this.filterForm.controls[element.columnName].value;

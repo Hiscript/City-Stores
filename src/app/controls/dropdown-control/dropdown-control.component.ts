@@ -14,6 +14,8 @@ export class DropdownControlComponent extends ControlBase implements OnInit {
     @Input() returnObject = false;
     @Input() autoReset = false;
 
+    @Input() data: any;
+
     items: DropdownData[];
 
     constructor(private dropdownService: DropdownService) {
@@ -26,6 +28,20 @@ export class DropdownControlComponent extends ControlBase implements OnInit {
                 this.items = data;
                 this.setDefault();
             });
+        } else {
+            // Convert enum to array
+            this.items = Object.keys(this.data)
+                .filter(key => typeof this.data[key] === 'number')
+                .map(
+                    key =>
+                        <DropdownData>{
+                            id: this.data[key],
+                            name: key,
+                            isDefault: this.data[key] === 1
+                        }
+                );
+
+            this.setDefault();
         }
     }
 

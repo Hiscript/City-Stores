@@ -1,0 +1,48 @@
+<div mat-dialog-title fxLayout="row">
+    <button mat-button fxHide.gt-md="true" (click)="close()" class="header-btn back" tabindex="-1">
+        <mat-icon class="material-icons">arrow_back</mat-icon>
+    </button>
+    {{data.attribute.attributeName?data.attribute.attributeName:'New Attribute'}}
+    <div class="spacer"></div>
+    <button mat-button fxHide.lt-lg="true" (click)="close()" class="header-btn close" tabindex="-1">
+        <mat-icon class="material-icons">close</mat-icon>
+    </button>
+</div>
+<div mat-dialog-content>
+    <div class="padding-15">
+        <form id="attributeForm" (ngSubmit)="submit()" [formGroup]="attributeForm" novalidate>
+            <div fxLayout="row wrap" fxLayoutGap="15px" class="pull-in-r">
+                <text-control required="true" label="Name" [control]="attributeForm.controls.attributeName"></text-control>
+                <dropdown-control *ngIf="data.attribute.parentId>0" required="true" label="Attribute Type" [data]="attributeType" [control]="attributeForm.controls.attributeType"></dropdown-control>
+
+                <div style="width: 250px" formArrayName="items" *ngIf="attributeForm.controls.attributeType.value == attributeType.Dropdown">
+                    <div dnd-sortable-container [sortableData]="items">
+                        <div *ngFor="let item of items.controls; let i=index" dnd-sortable [sortableIndex]="i" (onDropSuccess)="changeOrder(item,i+1)">
+                            <div [formGroupName]="i" class="box white border no-pad" [ngClass]="{'invalid': !items.controls[i].valid}">
+                                <div fxLayout="row">
+                                    <div fxFlex>
+                                        <input class="full-input" type="text" formControlName="itemName">
+                                    </div>
+                                    <div fxFlex="40px">
+                                        <button mat-icon-button type="button" (click)="removeItem(i)">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button mat-stroked-button color="primary" (click)="addItem()">
+                        ADD ITEM
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div mat-dialog-actions align="end">
+    <button form="attributeForm" type="submit" mat-flat-button color="primary">
+        SAVE
+    </button>
+</div>

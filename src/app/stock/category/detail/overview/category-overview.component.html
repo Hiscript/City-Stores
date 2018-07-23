@@ -1,0 +1,11 @@
+<div class="padding-15" fxLayoutGap="15px">
+    <form (ngSubmit)="submit()" [formGroup]="categoryForm" novalidate class="box white sm-pad-0">
+        <div>
+            <text-control required="true" label="Category Name" placeholder="Enter Category's Name" [control]="categoryForm.controls.categoryName"></text-control>
+        </div>
+        <div>
+            <dropdown-control required="true" label="Category Type" [dropdownType]="dropdownType.CategoryType" [control]="categoryForm.controls.categoryTypeId"></dropdown-control>
+        </div>
+        <button mat-flat-button type="submit" color="primary" loading-button="customer">Save</button>
+    </form>
+</div>

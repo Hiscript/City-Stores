@@ -8,7 +8,7 @@
             <mat-list-item *ngFor="let item of (data | async)?.items" (click)="select(item.id)">
                 <div matLine class="header">{{item.header}}</div>
                 <div matLine class="subheader">{{item.subheader}}</div>
-                <div matLine class="number"># {{item.number}} &nbsp;
+                <div matLine class="number" *ngIf="item.number"># {{item.number}} &nbsp;
                     <span [status]="item.status">{{item.status | status}}</span>
                 </div>
             </mat-list-item>

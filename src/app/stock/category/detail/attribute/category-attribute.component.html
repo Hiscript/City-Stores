@@ -1,0 +1,57 @@
+<div class="padding-15">
+    <button mat-flat-button color="primary" (click)="add()">
+        ADD ATTRIBUTE GROUP
+    </button>
+    <div class="divider divider-sm"></div>
+    <div dnd-sortable-container [sortableData]="attributes" [dropZones]="['item-dropZone']">
+        <div *ngFor="let attribute of attributes; let i=index" dnd-sortable [sortableIndex]="i" [dragEnabled]="activeParent" (mouseenter)="activeParent=true"
+            (onDropSuccess)="changeOrder(attribute,i+1)">
+            <div class="box white sm-pad-0 border" [ngClass]="{'first': i==0}">
+                <!-- Parent -->
+                <div fxLayout="row">
+                    <div fxFlex style="line-height: 40px">
+                        <span class="mat-h2">{{attribute.attributeName}}</span>
+                    </div>
+                    <div fxFlex="40px">
+                        <button mat-icon-button [matMenuTriggerFor]="appMenu" [matMenuTriggerData]="{id: attribute.categoryAttributeId, hasChild:attribute.childAttributes.length>0}">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Child -->
+                <div class="divider divider-sm"></div>
+                <div dnd-sortable-container [sortableData]="attribute.childAttributes" [dropZones]="['child-dropZone']">
+                    <div *ngFor="let child of attribute.childAttributes; let j=index" dnd-sortable [sortableIndex]="j" [dragEnabled]="!activeParent"
+                        (mouseleave)="activeParent=true" (mouseenter)="$event.stopPropagation();activeParent=false" (onDropSuccess)="changeOrder(child,j+1)">
+                        <div class="box white border no-pad-v" [ngClass]="{'first': j==0}">
+                            <div fxLayout="row">
+                                <div fxFlex style="line-height: 40px">
+                                    {{child.attributeName}}
+                                </div>
+                                <div fxFlex="40px">
+                                    <button mat-icon-button [matMenuTriggerFor]="appMenu" [matMenuTriggerData]="{id: child.categoryAttributeId,hasChild:false}">
+                                        <mat-icon>more_vert</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Child Button -->
+                <div class="divider divider-sm"></div>
+                <button mat-stroked-button color="primary" (click)="add(attribute.categoryAttributeId)">
+                    ADD ATTRIBUTE
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <mat-menu #appMenu="matMenu">
+        <ng-template matMenuContent let-id="id" let-hasChild="hasChild">
+            <button mat-menu-item (click)="edit(id)">Edit </button>
+            <button mat-menu-item *ngIf="!hasChild" (click)="delete(id)">Delete</button>
+        </ng-template>
+    </mat-menu>
+</div>

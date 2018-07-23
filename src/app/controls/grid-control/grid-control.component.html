@@ -8,7 +8,7 @@
                 <text-control width="100%" label="Search" placeholder="Type to search..." [control]="searchCtrl" suffix="search"></text-control>
             </div>
             <div fxFlex="25%">
-                <mat-form-field appearance="outline" style="max-width: 100%">
+                <mat-form-field appearance="outline" style="max-width: 100%" *ngIf="statuses">
                     <mat-label>Status</mat-label>
                     <mat-select [formControl]="statusCtrl">
                         <mat-option value="">All</mat-option>

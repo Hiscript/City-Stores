@@ -61,7 +61,7 @@ export class DataService {
         switch (response.status) {
             case 400:
                 this.snackBar.open(response.error, '', {
-                    duration: 0,
+                    duration: 3000,
                     panelClass: ['error-snack']
                 });
                 break;
