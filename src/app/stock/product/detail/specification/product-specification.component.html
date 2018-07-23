@@ -1,0 +1,28 @@
+<div class="padding-15">
+    <form #form="ngForm" [formGroup]="attributeForm" (ngSubmit)="submit()" novalidate *ngIf="attributeForm">
+        <div *ngFor="let attribute of attributes; let i=index">
+            <div class="box white sm-pad-0 border" [ngClass]="{'first': i==0}">
+                <div class="mat-h2">{{attribute.attributeName}}</div>
+                <div class="divider divider-sm"></div>
+
+                <div fxLayout="row wrap" fxLayoutGap="15px">
+                    <div *ngFor="let child of attribute.childAttributes">
+                        <div [ngSwitch]="child.attributeType">
+                            <div *ngSwitchCase="attributeType.Text">
+                                <text-control [label]="child.attributeName" [control]="attributeForm.controls[attribute.attributeName + child.attributeName]"></text-control>
+                            </div>
+                            <div *ngSwitchCase="attributeType.Number">
+                                <decimal-control [label]="child.attributeName" allowNagative="true" [control]="attributeForm.controls[attribute.attributeName + child.attributeName]"></decimal-control>
+                            </div>
+                            <div *ngSwitchCase="attributeType.Dropdown">
+                                <attribute-control [label]="child.attributeName" [attributeId]="child.categoryAttributeId" [control]="attributeForm.controls[attribute.attributeName + child.attributeName]"></attribute-control>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider divider-sm"></div>
+        <button mat-flat-button type="submit" color="primary">Save</button>
+    </form>
+</div>

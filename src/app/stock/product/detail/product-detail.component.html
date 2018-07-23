@@ -1,0 +1,29 @@
+<mat-toolbar class="page-title">
+    <button mat-button (click)="back()" class="header-btn back-arrow">
+        <mat-icon class="material-icons">arrow_back</mat-icon>
+    </button>
+    {{product.productName?product.productName:'New Product'}}
+</mat-toolbar>
+
+<div class="page-content">
+    <mat-tab-group class="page-tab" [selectedIndex]="tabIndex" (selectedIndexChange)="tabIndex=$event">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon *ngIf="device.handset">details</mat-icon>
+                <span *ngIf="!device.handset">DETAIL</span>
+            </ng-template>
+            <ng-template matTabContent>
+                <product-overview [product]="product"></product-overview>
+            </ng-template>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon *ngIf="device.handset">place</mat-icon>
+                <span *ngIf="!device.handset">SPECIFICATION</span>
+            </ng-template>
+            <ng-template matTabContent>
+                <product-specification [productId]="product.productId"></product-specification>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+</div>

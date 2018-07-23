@@ -14,7 +14,9 @@ import {
     FilterControlComponent,
     DropdownControlComponent,
     DecimalControlComponent,
-    NumberControlComponent
+    NumberControlComponent,
+    CategoryControlComponent,
+    AttributeControlComponent
 } from '.';
 import { MaterialModule } from '../material/material.module';
 import { GridControlComponent } from './grid-control/grid-control.component';
@@ -44,7 +46,9 @@ import { SharedModule } from '../shared/shared.module';
         FilterControlComponent,
         DropdownControlComponent,
         DecimalControlComponent,
-        NumberControlComponent
+        NumberControlComponent,
+        CategoryControlComponent,
+        AttributeControlComponent
     ],
     exports: [
         // controls
@@ -58,6 +62,8 @@ import { SharedModule } from '../shared/shared.module';
         DropdownControlComponent,
         DecimalControlComponent,
         NumberControlComponent,
+        CategoryControlComponent,
+        AttributeControlComponent,
 
         // modules
         CommonModule,

@@ -39,12 +39,12 @@ export class CategoryOverviewComponent implements OnInit {
     submit(): void {
         if (this.categoryForm.valid) {
             this.updateModel();
-            if (this.category.categoryId === 0) {
+            if (this.category.categoryId > 0) {
+                this.categoryService.update(this.category);
+            } else {
                 this.categoryService
                     .insert(this.category)
                     .then(customer => this.saved.emit(customer));
-            } else {
-                this.categoryService.update(this.category);
             }
         }
     }

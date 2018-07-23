@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CustomerService } from '../services/customer.service';
 import { Observable, Subject } from 'rxjs';
 import { GridData } from '../../../classes/grid-data';
 import { GridType } from '../../../classes/grid-type.enum';
@@ -7,40 +6,41 @@ import { SearchService } from '../../../global/search.service';
 import { debounceTime, switchMap, takeUntil, finalize, share } from 'rxjs/operators';
 import { DeviceService } from '../../../global/device.service';
 import { Router } from '@angular/router';
-import { CustomerStatus } from '../classes/customer-status.enum';
+import { ProductService } from '../services/product.service';
+import { ProductStatus } from '../classes/product-status.enum';
 
 @Component({
-    templateUrl: './customer-list.component.html'
+    templateUrl: './product-list.component.html'
 })
-export class CustomerListComponent implements OnInit, OnDestroy {
-    customers: Observable<GridData>;
-    gridType = GridType.Customer;
-    statuses = CustomerStatus;
+export class ProductListComponent implements OnInit, OnDestroy {
+    products: Observable<GridData>;
+    gridType = GridType.Product;
+    statuses = ProductStatus;
 
     private unsubscribe$ = new Subject();
 
     constructor(
         private router: Router,
-        private customerService: CustomerService,
+        private productService: ProductService,
         private searchService: SearchService,
         public device: DeviceService
     ) {}
 
     ngOnInit() {
-        this.customers = this.searchService.SearchTerms.pipe(
+        this.products = this.searchService.SearchTerms.pipe(
             debounceTime(500),
             takeUntil(this.unsubscribe$),
-            switchMap(terms => this.customerService.get(terms)),
+            switchMap(terms => this.productService.get(terms)),
             share()
         );
     }
 
     add() {
-        this.router.navigate(['/app/sale/customers/new']);
+        this.router.navigate(['/app/stock/products/new']);
     }
 
-    select(customerId: number): void {
-        this.router.navigate(['/app/sale/customers', customerId]);
+    select(productId: number): void {
+        this.router.navigate(['/app/stock/products', productId]);
     }
 
     ngOnDestroy(): void {

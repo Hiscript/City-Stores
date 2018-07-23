@@ -10,6 +10,11 @@ const routes: Routes = [
                 path: 'categories',
                 loadChildren: './category/category.module#CategoryModule',
                 canActivate: [AuthGuard]
+            },
+            {
+                path: 'products',
+                loadChildren: './product/product.module#ProductModule',
+                canActivate: [AuthGuard]
             }
         ]
     }

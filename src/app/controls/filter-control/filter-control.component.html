@@ -29,7 +29,11 @@
             </div>
             <!-- Category -->
             <div *ngSwitchCase="7">
-                <!-- <category-control width="300px" forFilter="true" [label]="item.DisplayName" [control]="filterForm.controls[item.ColumnName]"></category-control> -->
+                <category-control forFilter="true" [label]="item.displayName" [control]="filterForm.controls[item.columnName]"></category-control>
+            </div>
+            <!-- Status -->
+            <div *ngSwitchCase="8">
+                <dropdown-control *ngIf="statuses" forFilter="true" label="Status" [data]="statuses" [control]="filterForm.controls[item.columnName]"></dropdown-control>
             </div>
         </div>
     </div>

@@ -5,5 +5,6 @@ export enum ControlType {
     datePicker = 4,
     dropdown = 5,
     autoComplete = 6,
-    category = 7
+    category = 7,
+    status = 8
 }

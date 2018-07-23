@@ -30,7 +30,7 @@ export class GridControlComponent implements OnInit {
     @Input() data: Observable<GridData>;
     @Input() gridType: GridType;
     @Input() searchColumns: string;
-    @Input() statuses: any[];
+    @Input() statuses: any;
 
     @Output() selected: EventEmitter<number> = new EventEmitter<number>();
 
@@ -122,6 +122,7 @@ export class GridControlComponent implements OnInit {
         // Status
         this.statusCtrl = new FormControl();
         this.statusCtrl.valueChanges.subscribe(x => {
+            console.log(x);
             this.searchService.add({
                 tt: TermType.equals,
                 f: 'Status',

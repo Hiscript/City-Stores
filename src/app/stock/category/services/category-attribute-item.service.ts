@@ -11,15 +11,9 @@ export class CategoryAttributeItemService {
     url = 'categories';
     constructor(private dataService: DataService, private dialog: MatDialog) {}
 
-    get(categoryId: number, attributeId: number): Observable<CategoryAttributeItem[]> {
+    get(attributeId: number): Observable<CategoryAttributeItem[]> {
         return this.dataService.get<CategoryAttributeItem[]>(
-            this.url +
-                '/' +
-                categoryId.toString() +
-                '/attributes' +
-                '/' +
-                attributeId.toString() +
-                '/Items',
+            this.url + '/' + attributeId.toString() + '/Items',
             'categoryAttributeItem'
         );
     }

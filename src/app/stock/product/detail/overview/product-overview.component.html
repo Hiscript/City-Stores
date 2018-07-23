@@ -1,0 +1,32 @@
+<div class="padding-15" fxLayout="row" fxLayout.lt-lg="column" fxLayoutGap="15px">
+    <div fxFlex="250px" fxFlex.lt-lg="1">
+        <div fxLayout="column" fxLayout.lt-lg="row">
+            <single-image entity="products" [key]="product.imageURL" (updated)="changeImage($event)"></single-image>
+            <div class="padding-15 text-center">
+                <span [status]="product.status">{{product.status | status}}</span>
+            </div>
+        </div>
+    </div>
+    <div fxFlex="100%-250px">
+        <form (ngSubmit)="submit()" [formGroup]="productForm" novalidate class="box white sm-pad-0">
+            <div fxLayout="row" fxLayout.lt-lg="column" fxLayoutGap="60px" fxLayoutGap.lt-lg="0">
+                <div fxFlex="250px" fxFlex.lt-lg="1">
+                    <text-control required="true" label="SKU" [control]="productForm.controls.sku"></text-control>
+                    <text-control required="true" label="Name" [control]="productForm.controls.productName"></text-control>
+                    <category-control required="true" label="Category" [control]="productForm.controls.categoryId"></category-control>
+                    <dropdown-control required="true" label="Measurement Unit" [dropdownType]="dropdownType.MeasurementUnit" [control]="productForm.controls.measurementUnitId"></dropdown-control>
+                    
+                </div>
+                <div fxFlex="250px" fxFlex.lt-lg="1">
+                    <!-- <dropdown-control required="true" label="Tracking Type" [data]="trackingType" [control]="productForm.controls.trackingType"></dropdown-control>
+                    <dropdown-control required="true" label="Weight Category" [dropdownType]="dropdownType.WeightCategory" [control]="productForm.controls.weightCategoryId"></dropdown-control> -->
+                    <number-control label="Min. Qty" [control]="productForm.controls.minQuantity">
+                    </number-control>
+                    <number-control label="Max. Qty" [control]="productForm.controls.maxQuantity">
+                    </number-control>
+                </div>
+            </div>
+            <button mat-flat-button type="submit" color="primary" loading-button="product">Save</button>
+        </form>
+    </div>
+</div>

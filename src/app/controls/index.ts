@@ -9,6 +9,8 @@ export * from './textarea-control/textarea-control.component';
 export * from './dropdown-control/dropdown-control.component';
 export * from './decimal-control/decimal-control.component';
 export * from './number-control/number-control.component';
+export * from './category-control/category-control.component';
+export * from './attribute-control/attribute-control.component';
 
 // pipes
 export * from './pipes/error-message.pipe';

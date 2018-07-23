@@ -11,6 +11,7 @@ import { TermType } from '../../classes/term-type.enum';
 })
 export class FilterControlComponent implements OnInit {
     @Input() filters: Column[];
+    @Input() statuses: any;
 
     @Output() apply: EventEmitter<SearchTerm[]> = new EventEmitter<SearchTerm[]>();
 
@@ -51,6 +52,9 @@ export class FilterControlComponent implements OnInit {
                         case ControlType.autoComplete:
                         case ControlType.category:
                             term.t = this.filterForm.controls[element.columnName].value.name;
+                            break;
+                        case ControlType.status:
+                            term.t = this.filterForm.controls[element.columnName].value.id;
                             break;
                         default:
                             term.t = this.filterForm.controls[element.columnName].value;
