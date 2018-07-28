@@ -2,7 +2,7 @@
     <form #form="ngForm" [formGroup]="attributeForm" (ngSubmit)="submit()" novalidate *ngIf="attributeForm">
         <div *ngFor="let attribute of attributes; let i=index">
             <div class="box white sm-pad-0 border" [ngClass]="{'first': i==0}">
-                <div class="mat-h2">{{attribute.attributeName}}</div>
+                <div class="mat-h2 color-gray">{{attribute.attributeName}}</div>
                 <div class="divider divider-sm"></div>
 
                 <div fxLayout="row wrap" fxLayoutGap="15px">

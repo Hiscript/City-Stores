@@ -3,6 +3,13 @@
     cursor: pointer;
 }
 
+tr.selected {
+    background-color: $primary-light !important;
+    &:hover {
+        background-color: $primary-light !important;
+    }
+}
+
 td.image {
     width: 70px;
     .mat-icon {
@@ -10,6 +17,6 @@ td.image {
     }
 }
 
-td.status{
+td.status {
     width: 70px;
 }

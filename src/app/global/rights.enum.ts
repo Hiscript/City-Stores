@@ -1,6 +1,7 @@
 export enum Right {
     dashboard = 1,
 
+    catalog = 29,
     categories = 3,
     products = 4,
     stockAdjustments = 5,

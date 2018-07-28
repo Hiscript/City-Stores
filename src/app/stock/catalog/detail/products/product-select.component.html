@@ -1,0 +1,26 @@
+<div mat-dialog-title fxLayout="row">
+    <button mat-button fxHide.gt-md="true" (click)="close()" class="header-btn back" tabindex="-1">
+        <mat-icon class="material-icons">arrow_back</mat-icon>
+    </button>
+    Select
+    <div class="spacer"></div>
+    <button mat-button fxHide.lt-lg="true" (click)="close()" class="header-btn close" tabindex="-1">
+        <mat-icon class="material-icons">close</mat-icon>
+    </button>
+</div>
+<div mat-dialog-content>
+    <grid-control *ngIf="!device.handset" enableMultiselect="true" [gridType]="gridType" [data]="products" searchColumns="SKU,ProductName,CategoryName"
+        [statuses]="statuses" (multipleSelected)="selected = $event" [selectedIds]="data"></grid-control>
+
+    <list-control *ngIf="device.handset" enableMultiselect="true" [gridType]="gridType" [data]="products" (selected)="select($event)"
+        (multipleSelected)="selected = $event" [selectedIds]="data"></list-control>
+</div>
+<div mat-dialog-actions>
+    <div *ngIf="selected" style="line-height: 36px;">
+        {{selected.length}}&nbsp;item(s) selected
+    </div>
+    <div class="spacer"></div>
+    <button form="catalogForm" type="button" mat-flat-button color="primary" (click)="save()">
+        SAVE
+    </button>
+</div>

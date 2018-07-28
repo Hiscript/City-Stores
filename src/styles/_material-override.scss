@@ -27,6 +27,14 @@ th.mat-header-cell:last-child {
 .table-container {
     padding-bottom: 56px;
 }
+.mat-dialog-content {
+    .mat-paginator {
+        position: absolute;
+    }
+    .table-container {
+        padding-bottom: 0px;
+    }
+}
 
 // Outline
 .mat-form-field-appearance-outline .mat-form-field-outline-thick .mat-form-field-outline-end,
@@ -80,11 +88,23 @@ button.active {
     color: $accent !important;
     background-color: $gray-200 !important;
 }
+button.gray {
+    color: rgba(0, 0, 0, 0.6) !important;
+}
+button.gray:hover {
+    color: rgba(0, 0, 0, 0.87) !important;
+}
 
 // List
 .mat-list-item.active {
     background-color: $white;
 }
-.mat-list-item.active:hover{
+.mat-list-item.active:hover {
     background-color: $white !important;
+}
+.mat-list-item.selected {
+    background-color: $primary-light !important;
+    &:hover {
+        background-color: $primary-light !important;
+    }
 }

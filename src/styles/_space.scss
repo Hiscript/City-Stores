@@ -116,12 +116,21 @@ span.block {
 }
 
 //
+.margin-b-15 {
+    margin-bottom: 15px;
+}
 .margin-b-lg {
     margin-bottom: 30px;
 }
 
 .padding-15 {
     padding: 15px !important;
+}
+.padding-v-sm-0 {
+    @media only screen and (max-width: map-get($grid-breakpoints, md) - 1) {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
 }
 
 .left-margin-10 {

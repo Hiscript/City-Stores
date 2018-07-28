@@ -2,6 +2,9 @@
 .text-center {
     text-align: center;
 }
+.vertical-middle {
+    vertical-align: middle;
+}
 
 // Colors
 .color-primary {
@@ -12,6 +15,9 @@
 }
 .color-warn {
     color: $warn;
+}
+.color-gray {
+    color: rgba(0, 0, 0, 0.6) !important;
 }
 
 // Status Pills
@@ -45,4 +51,39 @@
     height: 100%;
     padding: 0px 0px 0px 5px;
     border: none;
+}
+
+// Font
+.font-16-sm-14 {
+    font-size: 16px;
+
+    @media only screen and (max-width: map-get($grid-breakpoints, md) - 1) {
+        font-size: 14px;
+    }
+}
+.font-24-sm-16 {
+    font-size: 24px;
+
+    @media only screen and (max-width: map-get($grid-breakpoints, md) - 1) {
+        font-size: 16px;
+    }
+}
+
+.font-24 {
+    font-size: 24px;
+}
+
+.editable {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.87);
+    cursor: pointer;
+    &:hover {
+        color: $accent;
+    }
+}
+
+.text-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }

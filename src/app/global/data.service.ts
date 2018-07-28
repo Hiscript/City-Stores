@@ -49,6 +49,16 @@ export class DataService {
         );
     }
 
+    patch(url: string, property: any, value: any, entity: string = ''): Observable<boolean> {
+        this.loadingService.add(entity);
+        return this.httpClient
+            .patch<boolean>(this.baseUrl + url + '/' + property + '/' + value, null)
+            .pipe(
+                catchError(res => this.handleError(res)),
+                finalize(() => this.loadingService.remove(entity))
+            );
+    }
+
     delete<T>(url: string, entity: string = ''): Observable<T> {
         this.loadingService.add(entity);
         return this.httpClient.delete<T>(this.baseUrl + url).pipe(

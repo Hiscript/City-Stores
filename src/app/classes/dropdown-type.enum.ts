@@ -4,5 +4,6 @@ export enum DropdownType {
     AttributeType = 3,
     Category = 4,
     MeasurementUnit = 5,
-    WeightCategory = 6
+    WeightCategory = 6,
+    AdjustmentReason = 7
 }

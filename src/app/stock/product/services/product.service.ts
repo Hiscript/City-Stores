@@ -32,6 +32,13 @@ export class ProductService {
         }
     }
 
+    getList(terms: SearchTerm[] = []): Observable<GridData> {
+        return this.dataService.get<GridData>(
+            this.url + '/m?terms=' + JSON.stringify(terms),
+            'search'
+        );
+    }
+
     detail(productId: number): Promise<Product> {
         return this.dataService
             .get<Product>(this.url + '/' + productId.toString(), 'product')
@@ -51,6 +58,10 @@ export class ProductService {
             .put<Product>(this.url, product, 'product')
             .pipe(first())
             .toPromise();
+    }
+
+    patch(productId: number, property: string, value: any) {
+        return this.dataService.patch(this.url + '/' + productId, property, value);
     }
 
     changeImage(productId: number, imageURL: string): Observable<boolean> {

@@ -21,6 +21,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { SearchTerm } from '../../classes/search-term';
 import { DocumentService } from '../../global/document.service';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
     selector: 'grid-control',
@@ -31,8 +32,12 @@ export class GridControlComponent implements OnInit {
     @Input() gridType: GridType;
     @Input() searchColumns: string;
     @Input() statuses: any;
+    @Input() enableMultiselect = false;
 
+    @Input() selectedIds: number[];
     @Output() selected: EventEmitter<number> = new EventEmitter<number>();
+    @Output() multipleSelected: EventEmitter<number[]> = new EventEmitter<number[]>();
+    selection: SelectionModel<number>;
 
     navClosed = true;
 
@@ -71,6 +76,8 @@ export class GridControlComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.selection = new SelectionModel<number>(true, this.selectedIds);
+
         this.columnService.get(this.gridType).subscribe(c => {
             this.convertToGridColumn(c);
             this.filters = c.filter(f => f.isFilter);
@@ -122,7 +129,6 @@ export class GridControlComponent implements OnInit {
         // Status
         this.statusCtrl = new FormControl();
         this.statusCtrl.valueChanges.subscribe(x => {
-            console.log(x);
             this.searchService.add({
                 tt: TermType.equals,
                 f: 'Status',
@@ -136,6 +142,11 @@ export class GridControlComponent implements OnInit {
     }
 
     select(id: number): void {
-        this.selected.emit(id);
+        if (this.enableMultiselect) {
+            this.selection.toggle(id);
+            this.multipleSelected.emit(this.selection.selected);
+        } else {
+            this.selected.emit(id);
+        }
     }
 }

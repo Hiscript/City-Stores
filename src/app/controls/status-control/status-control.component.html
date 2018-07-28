@@ -1,0 +1,10 @@
+<span class="font-16-sm-14" [status]="statusId">{{statusId | status}}</span>&nbsp;
+<button class="gray" mat-icon-button [matMenuTriggerFor]="appMenu">
+    <mat-icon>edit</mat-icon>
+</button>
+
+<mat-menu #appMenu="matMenu">
+    <ng-template matMenuContent>
+        <button mat-menu-item (click)="change(status.id)" *ngFor="let status of statuses">{{status.name}}</button>
+    </ng-template>
+</mat-menu>

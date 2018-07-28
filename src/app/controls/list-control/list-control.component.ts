@@ -17,6 +17,7 @@ import { GridType } from '../../classes/grid-type.enum';
 import { Column } from '../../classes/column';
 import { ColumnService } from '../../global/column.service';
 import { SearchTerm } from '../../classes/search-term';
+import { SelectionModel } from '../../../../node_modules/@angular/cdk/collections';
 
 @Component({
     selector: 'list-control',
@@ -25,8 +26,12 @@ import { SearchTerm } from '../../classes/search-term';
 export class ListControlComponent implements OnInit {
     @Input() data: Observable<GridData>;
     @Input() gridType: GridType;
+    @Input() enableMultiselect = false;
+    @Input() selectedIds: number[];
 
     @Output() selected: EventEmitter<number> = new EventEmitter<number>();
+    @Output() multipleSelected: EventEmitter<number[]> = new EventEmitter<number[]>();
+    selection: SelectionModel<number>;
 
     navClosed = true;
     filters: Column[];
@@ -53,6 +58,8 @@ export class ListControlComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.selection = new SelectionModel<number>(true, this.selectedIds);
+
         this.columnService.getFilterColumns(this.gridType).subscribe(c => {
             this.filters = c;
         });
@@ -73,6 +80,11 @@ export class ListControlComponent implements OnInit {
     }
 
     select(id: number): void {
-        this.selected.emit(id);
+        if (this.enableMultiselect) {
+            this.selection.toggle(id);
+            this.multipleSelected.emit(this.selection.selected);
+        } else {
+            this.selected.emit(id);
+        }
     }
 }

@@ -35,7 +35,7 @@
                     </ng-container>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
-                <tr mat-row class="clickable" (click)="select(row.id)" *matRowDef="let row; columns:displayColumns;"></tr>
+                <tr mat-row class="clickable" [ngClass]="{'selected': selection.isSelected(row.id)}" (click)="select(row.id)" *matRowDef="let row; columns:displayColumns;"></tr>
             </table>
         </div>
         <mat-paginator #paginator [length]="(data | async)?.total" [ngStyle]="{display: (data | async)?.total > 15?'block':'none'}"

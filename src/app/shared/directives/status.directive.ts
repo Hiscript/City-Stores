@@ -1,14 +1,19 @@
-import { Directive, ElementRef, Input, Renderer2, AfterViewInit } from '@angular/core';
+import { Directive, ElementRef, Input, Renderer2, AfterViewInit, OnChanges } from '@angular/core';
 
 @Directive({
     selector: '[status]'
 })
-export class StatusDirective implements AfterViewInit {
+export class StatusDirective implements AfterViewInit, OnChanges {
     @Input('status') status: number;
 
     constructor(private el: ElementRef, private renderer: Renderer2) {}
 
     ngAfterViewInit() {
+       // this.setStatus();
+    }
+
+    ngOnChanges() {
+        this.removePreviousStatus();
         this.setStatus();
     }
 
@@ -67,5 +72,12 @@ export class StatusDirective implements AfterViewInit {
                 this.renderer.addClass(this.el.nativeElement, 'danger');
                 break;
         }
+    }
+
+    removePreviousStatus() {
+        this.renderer.removeClass(this.el.nativeElement, 'success');
+        this.renderer.removeClass(this.el.nativeElement, 'danger');
+        this.renderer.removeClass(this.el.nativeElement, 'progress');
+        this.renderer.removeClass(this.el.nativeElement, 'parked');
     }
 }

@@ -4,6 +4,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
 import { TrackingType } from '../../classes/tracking-type.enum';
 import { DropdownType } from '../../../../classes/dropdown-type.enum';
+import { ProductStatus } from '../../classes/product-status.enum';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductAdjustmentComponent } from './adjustment/product-adjustment.component';
+import { ProductStockService } from '../../services/product-stock.service';
+import { ProductStock } from '../../classes/product-stock';
 
 @Component({
     selector: 'product-overview',
@@ -12,15 +17,30 @@ import { DropdownType } from '../../../../classes/dropdown-type.enum';
 export class ProductOverviewComponent implements OnInit {
     @Input() product: Product;
     productForm: FormGroup;
+    stock: ProductStock;
+
+    statuses = ProductStatus;
     trackingType = TrackingType;
     dropdownType = DropdownType;
 
-    constructor(private productService: ProductService, private fb: FormBuilder) {
+    constructor(
+        private productService: ProductService,
+        private stockService: ProductStockService,
+        private fb: FormBuilder,
+        public dialog: MatDialog
+    ) {
         this.createForm();
     }
 
     ngOnInit() {
         this.productForm.patchValue(this.product);
+        this.refreshStock();
+    }
+
+    private refreshStock() {
+        if (this.product.productId > 0) {
+            this.stockService.getStock(this.product.productId).then(stock => (this.stock = stock));
+        }
     }
 
     private createForm(): void {
@@ -57,6 +77,18 @@ export class ProductOverviewComponent implements OnInit {
         }
     }
 
+    statusChange(status: number) {
+        if (this.product.productId > 0) {
+            this.productService
+                .patch(this.product.productId, 'status', status)
+                .subscribe(changed => {
+                    if (changed) {
+                        this.product.status = status;
+                    }
+                });
+        }
+    }
+
     changeImage(key: string) {
         if (this.product.productId > 0) {
             this.productService.changeImage(this.product.productId, key).subscribe(changed => {
@@ -66,6 +98,24 @@ export class ProductOverviewComponent implements OnInit {
             });
         } else {
             this.product.imageURL = key;
+        }
+    }
+
+    openAdjustment() {
+        if (this.product.productId > 0) {
+            const dialogRef = this.dialog.open(ProductAdjustmentComponent, {
+                panelClass: ['full-sm-dialog', 'single'],
+                data: {
+                    stock: this.stock,
+                    productId: this.product.productId
+                }
+            });
+
+            dialogRef.afterClosed().subscribe(changed => {
+                if (changed) {
+                    this.refreshStock();
+                }
+            });
         }
     }
 }

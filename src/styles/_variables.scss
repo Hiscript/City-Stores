@@ -4,6 +4,7 @@ $accent-palette: mat-palette($mat-light-blue);
 $warn-palette: mat-palette($mat-deep-orange, A200);
 
 $primary: mat-color($primary-palette);
+$primary-light: mat-color($primary-palette, 300, 0.3);
 $accent: mat-color($accent-palette);
 $warn: mat-color($warn-palette);
 

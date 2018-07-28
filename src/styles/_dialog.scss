@@ -52,6 +52,9 @@
         &.single {
             width: 280px !important;
         }
+        &.grid {
+            width: 1000px !important;
+        }
     }
 
     @media only screen and (max-width: map-get($grid-breakpoints, lg) - 1) {

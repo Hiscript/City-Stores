@@ -11,6 +11,7 @@ export * from './decimal-control/decimal-control.component';
 export * from './number-control/number-control.component';
 export * from './category-control/category-control.component';
 export * from './attribute-control/attribute-control.component';
+export * from './status-control/status-control.component';
 
 // pipes
 export * from './pipes/error-message.pipe';

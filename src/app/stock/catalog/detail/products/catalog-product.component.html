@@ -1,0 +1,17 @@
+<div class="padding-15">
+    <div fxLayout="row wrap" fxLayoutGap="5px grid">
+        <div fxFlex="10%" fxFlex.lt-md="50%" *ngFor="let product of products; let i=index">
+            <div class="box border-box white no-pad">
+                <img [src]="document.getThumbURL(product.imageURL)" alt="no-image" *ngIf="product.imageURL" class="image" />
+                <div class="padding-15 text-ellipsis">
+                    <a class="editable" [routerLink]="'/app/stock/products/'+product.productId" target="_blank">{{product.productName}}</a>
+                </div>
+                <div style="position:absolute; top: 0px; right: 0px">
+                    <button type="button" mat-flat-button color="default" matTooltip="Remove" class="square" (click)="delete(product.catalogProductId, i)">
+                        <mat-icon>close</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

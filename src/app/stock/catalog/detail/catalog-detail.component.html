@@ -1,0 +1,20 @@
+<mat-toolbar class="page-title">
+    <button mat-button (click)="back()" class="header-btn back-arrow">
+        <mat-icon class="material-icons">arrow_back</mat-icon>
+    </button>
+    {{catalog.catalogName}}&nbsp;
+    <button mat-icon-button (click)="edit()" class="gray">
+        <mat-icon class="material-icons">edit</mat-icon>
+    </button>
+    <div class="spacer"></div>
+    <button mat-flat-button color="primary" (click)="add()" fxHide.lt-lg="true">
+        Add Product(s)
+    </button>
+    <button mat-button color="primary" (click)="add()" class="header-btn" fxHide.gt-md="true">
+        <mat-icon class="material-icons">add</mat-icon>
+    </button>
+</mat-toolbar>
+
+<div class="page-content">
+    <catalog-product [catalogId]="catalog.catalogId" [products]="products"></catalog-product>
+</div>

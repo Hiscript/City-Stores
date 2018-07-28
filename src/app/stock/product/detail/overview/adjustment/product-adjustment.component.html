@@ -1,0 +1,37 @@
+<div mat-dialog-title fxLayout="row">
+    <button mat-button fxHide.gt-md="true" (click)="close()" class="header-btn back" tabindex="-1">
+        <mat-icon class="material-icons">arrow_back</mat-icon>
+    </button>
+    Adjustment
+    <div class="spacer"></div>
+    <button mat-button fxHide.lt-lg="true" (click)="close()" class="header-btn close" tabindex="-1">
+        <mat-icon class="material-icons">close</mat-icon>
+    </button>
+</div>
+<div mat-dialog-content>
+    <div class="padding-15">
+        <form id="adjustmentForm" (ngSubmit)="submit()" [formGroup]="adjustmentForm" novalidate>
+            <div fxLayout="row wrap" fxLayoutGap="15px" class="pull-in-r">
+                <dropdown-control required="true" label="Adjustment Reason" [dropdownType]="dropdownType.AdjustmentReason" [control]="adjustmentForm.controls.adjustmentReasonId"></dropdown-control>
+                <decimal-control required="true" label="Adjustment" allowNagative="true" [control]="adjustmentForm.controls.quantity"></decimal-control>
+                <!-- <decimal-control required="true" label="Stock Value" allowNagative="true" [control]="adjustmentForm.controls.amount"></decimal-control> -->
+                <textarea-control rows="4" label="Notes" [control]="adjustmentForm.controls.notes"></textarea-control>
+            </div>
+            <div fxLayout="row" fxLayoutGap="15px" class="pull-in-r">
+                <div fxFlex>
+                    <div class="mat-caption">Current</div>
+                    <div class="font-24">{{data.stock.quantity}}&nbsp;{{data.stock.measurementUnit}}</div>
+                </div>
+                <div fxFlex *ngIf="adjustmentForm.controls.quantity.valid && adjustmentForm.controls.quantity.value">
+                    <div class="mat-caption">After Adjustment</div>
+                    <div class="font-24">{{data.stock.quantity + +adjustmentForm.controls.quantity.value}}&nbsp;{{data.stock.measurementUnit}}</div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div mat-dialog-actions align="end">
+    <button form="adjustmentForm" type="submit" mat-flat-button color="primary">
+        SAVE
+    </button>
+</div>

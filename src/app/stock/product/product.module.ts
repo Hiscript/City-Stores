@@ -12,6 +12,8 @@ import { ProductSpecificationComponent } from './detail/specification/product-sp
 import { DocumentModule } from '../../document/document.module';
 import { ProductAttributeService } from './services/product-attribute.service';
 import { CategoryAttributeItemService } from '../category/services/category-attribute-item.service';
+import { ProductStockService } from './services/product-stock.service';
+import { ProductAdjustmentComponent } from './detail/overview/adjustment/product-adjustment.component';
 
 @NgModule({
     imports: [ProductRoutingModule, ControlModule, SharedModule, MaterialModule, DocumentModule],
@@ -19,8 +21,16 @@ import { CategoryAttributeItemService } from '../category/services/category-attr
         ProductListComponent,
         ProductDetailComponent,
         ProductOverviewComponent,
-        ProductSpecificationComponent
+        ProductSpecificationComponent,
+        ProductAdjustmentComponent
     ],
-    providers: [ProductService, ProductResolve, ProductAttributeService, CategoryAttributeItemService]
+    providers: [
+        ProductService,
+        ProductResolve,
+        ProductAttributeService,
+        CategoryAttributeItemService,
+        ProductStockService
+    ],
+    entryComponents: [ProductAdjustmentComponent]
 })
 export class ProductModule {}

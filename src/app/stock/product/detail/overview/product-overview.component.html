@@ -1,9 +1,25 @@
 <div class="padding-15" fxLayout="row" fxLayout.lt-lg="column" fxLayoutGap="15px">
     <div fxFlex="250px" fxFlex.lt-lg="1">
         <div fxLayout="column" fxLayout.lt-lg="row">
+
+            <!-- Image -->
             <single-image entity="products" [key]="product.imageURL" (updated)="changeImage($event)"></single-image>
-            <div class="padding-15 text-center">
-                <span [status]="product.status">{{product.status | status}}</span>
+            <div>
+
+                <!-- Status -->
+                <div class="padding-15 padding-v-sm-0" *ngIf="product.productId>0">
+                    <div class="mat-caption">status</div>
+                    <status-control [statusId]="product.status" [enum]="statuses" (changed)="statusChange($event)"></status-control>
+                </div>
+
+                <!-- Stock -->
+                <div class="padding-15 padding-v-sm-0" *ngIf="product.productId>0">
+                    <div class="mat-caption">stock</div>
+                    <span *ngIf="stock" class="font-24-sm-16 vertical-middle" (click)="openAdjustment()">{{stock.quantity}}&nbsp;{{stock.measurementUnit}}</span>
+                    <button *ngIf="stock" class="gray" mat-icon-button (click)="openAdjustment()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -15,7 +31,7 @@
                     <text-control required="true" label="Name" [control]="productForm.controls.productName"></text-control>
                     <category-control required="true" label="Category" [control]="productForm.controls.categoryId"></category-control>
                     <dropdown-control required="true" label="Measurement Unit" [dropdownType]="dropdownType.MeasurementUnit" [control]="productForm.controls.measurementUnitId"></dropdown-control>
-                    
+
                 </div>
                 <div fxFlex="250px" fxFlex.lt-lg="1">
                     <!-- <dropdown-control required="true" label="Tracking Type" [data]="trackingType" [control]="productForm.controls.trackingType"></dropdown-control>
